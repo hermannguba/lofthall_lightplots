@@ -109,7 +109,7 @@ var MvrImport = (function () {
   }
 
   function matrixOf(el) {
-    return parseMatrix(directText(el, "Matrix"));
+    return parseMatrix(directText(el, "Matrix") || attr(el, "Matrix"));
   }
 
   // MVR millimetres, Z up, +Y upstage -> plot metres, Y up, +Z upstage.
@@ -167,7 +167,7 @@ var MvrImport = (function () {
   function parseAddress(text) {
     const value = text.trim();
     if (!value) return { universe: null, address: null };
-    const dotted = /^(\d+)\.(\d+)$/.exec(value);
+    const dotted = /^(\d+)\s*[./:]\s*(\d+)$/.exec(value.replace(",", "."));
     if (dotted) {
       return { universe: Number(dotted[1]), address: Number(dotted[2]) };
     }
@@ -181,23 +181,34 @@ var MvrImport = (function () {
 
   function addressOf(el) {
     const box = direct(el, "Addresses");
-    if (!box) return { universe: null, address: null };
-    let chosen = null;
-    for (const child of box.children) {
-      if (localName(child) !== "address") continue;
-      const brk = attr(child, "break");
-      if (brk === "" || brk === "0") {
-        chosen = child;
-        break;
+    if (box) {
+      let chosen = null;
+      for (const child of box.children) {
+        if (localName(child) !== "address") continue;
+        const brk = attr(child, "break");
+        if (brk === "" || brk === "0") {
+          chosen = child;
+          break;
+        }
+        if (!chosen) chosen = child;
       }
-      if (!chosen) chosen = child;
+      if (chosen) return parseAddress(chosen.textContent);
     }
-    return chosen ? parseAddress(chosen.textContent) : { universe: null, address: null };
+    const single = directText(el, "Address") || attr(el, "Address");
+    if (single) return parseAddress(single);
+    const universe = Number(directText(el, "Universe"));
+    const local = Number(directText(el, "DMXAddress") || directText(el, "Patch"));
+    if (Number.isInteger(universe) && universe > 0 && Number.isInteger(local) && local > 0) {
+      return { universe: universe, address: local };
+    }
+    return { universe: null, address: null };
   }
 
   function gdtfInfo(bytes, modeName) {
     if (!bytes) return null;
-    return ZipReader.unzip(bytes).then(function (files) {
+    return ZipReader.unzip(bytes, function (name) {
+      return /description\.xml$/i.test(name);
+    }).then(function (files) {
       const description = ZipReader.find(files, "description.xml");
       if (!description) return null;
       const doc = xml(description);
@@ -252,7 +263,9 @@ var MvrImport = (function () {
   }
 
   async function parse(buffer, fileName) {
-    const files = await ZipReader.unzip(buffer);
+    const files = await ZipReader.unzip(buffer, function (name) {
+      return /\.(xml|gdtf)$/i.test(name);
+    });
     let sceneBytes = null;
     for (const [name, data] of files) {
       if (name.split("/").pop().toLowerCase() === "generalscenedescription.xml") {
@@ -329,18 +342,13 @@ var MvrImport = (function () {
       const world = multiply(parent, matrixOf(el));
       const nextLayer = name === "layer" ? (attr(el, "name") || layer) : layer;
       if (DRAW[name]) await addObject(el, world, nextLayer, DRAW[name]);
-      const list = direct(el, "ChildList");
+      const list = direct(el, "ChildList") || direct(el, "Layers");
       if (!list) return;
       for (const child of list.children) await walk(child, world, nextLayer);
     }
 
-    const layersNode = elements(scene, "Layers")[0];
-    if (!layersNode) throw new Error("В MVR нет списка слоёв.");
-    for (const layer of layersNode.children) {
-      if (localName(layer) !== "layer") continue;
-      await walk(layer, identity(), attr(layer, "name") || "Слой");
-    }
-    if (!objects.length) throw new Error("В MVR нет приборов и объектов сцены.");
+    await walk(scene, identity(), "Сцена");
+    if (!objects.length) throw new Error("В MVR не нашлось приборов. Нужен файл сцены из Capture, Vectorworks или grandMA.");
 
     const fixtures = objects.filter(function (obj) { return obj.kind === "fixture"; }).length;
     const title = (fileName || "MVR").replace(/\.[^.]+$/, "") || "MVR";

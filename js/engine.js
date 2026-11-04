@@ -147,8 +147,13 @@ void main() {
     this.target = [0, 3, 3];
     this.ortho = false;
     this.viewName = "orbit";
+    this.tool = "look";
+    this.ghost = null;
+    this.placeHeight = 0;
     this.onSelect = null;
     this.onViewChange = null;
+    this.onTransform = null;
+    this.onPlace = null;
     this._scratch = {
       proj: M.mat4(),
       view: M.mat4(),
@@ -169,49 +174,94 @@ void main() {
     this._resizeObs.observe(canvas);
   }
 
+  Engine.prototype._applyLens = function (item) {
+    const obj = item.obj;
+    if (obj.kind !== "fixture") {
+      item.lens = null;
+      return;
+    }
+    const lensSize = [
+      Math.min(obj.size[0] * 0.55, 0.18),
+      Math.min(obj.size[1] * 0.42, 0.14),
+      Math.min(Math.max(obj.size[2] * 0.18, 0.05), 0.1),
+    ];
+    const lensModel = M.mat4();
+    const local = [0, 0, obj.size[2] / 2 + lensSize[2] / 2];
+    const r = M.mat4();
+    const t = M.mat4();
+    const lt = M.mat4();
+    const s = M.mat4();
+    const a = M.mat4();
+    const b = M.mat4();
+    M.fromEuler(obj.rotation, r);
+    M.translation(obj.position, t);
+    M.translation(local, lt);
+    M.scaling(lensSize, s);
+    M.multiply(lt, s, a);
+    M.multiply(r, a, b);
+    M.multiply(t, b, lensModel);
+    item.lens = { model: lensModel, color: [0.08, 0.08, 0.09] };
+  };
+
+  Engine.prototype._itemFor = function (obj) {
+    const model = M.mat4();
+    composeModel(obj.position, obj.rotation, obj.size, model);
+    const item = {
+      obj: obj,
+      model: model,
+      color: PlotFormat.colorFor(obj),
+      lens: null,
+    };
+    this._applyLens(item);
+    return item;
+  };
+
   Engine.prototype.load = function (plot) {
-    const self = this;
     this.plot = plot;
-    this.items = plot.objects.map(function (obj) {
-      const model = M.mat4();
-      composeModel(obj.position, obj.rotation, obj.size, model);
-      const item = {
-        obj: obj,
-        model: model,
-        color: PlotFormat.colorFor(obj),
-        lens: null,
-      };
-      if (obj.kind === "fixture") {
-        const lensSize = [
-          Math.min(obj.size[0] * 0.55, 0.18),
-          Math.min(obj.size[1] * 0.42, 0.14),
-          Math.min(Math.max(obj.size[2] * 0.18, 0.05), 0.1),
-        ];
-        const lensModel = M.mat4();
-        const local = [0, 0, obj.size[2] / 2 + lensSize[2] / 2];
-        const r = M.mat4();
-        const t = M.mat4();
-        const lt = M.mat4();
-        const s = M.mat4();
-        const a = M.mat4();
-        const b = M.mat4();
-        M.fromEuler(obj.rotation, r);
-        M.translation(obj.position, t);
-        M.translation(local, lt);
-        M.scaling(lensSize, s);
-        M.multiply(lt, s, a);
-        M.multiply(r, a, b);
-        M.multiply(t, b, lensModel);
-        item.lens = { model: lensModel, color: [0.08, 0.08, 0.09] };
-      }
-      return item;
-    });
+    this.items = plot.objects.map((obj) => this._itemFor(obj));
     this.hidden.clear();
     this.selectedId = null;
     this.hoverId = null;
+    this.ghost = null;
+    this.tool = "look";
     this._rebuildLines();
     this.setView("orbit");
     if (this.onSelect) this.onSelect(null);
+  };
+
+  Engine.prototype.refresh = function (id) {
+    const item = this.items.find(function (entry) { return entry.obj.id === id; });
+    if (!item) return;
+    composeModel(item.obj.position, item.obj.rotation, item.obj.size, item.model);
+    item.color = PlotFormat.colorFor(item.obj);
+    this._applyLens(item);
+    this._rebuildLines();
+  };
+
+  Engine.prototype.addObject = function (obj) {
+    this.plot.objects.push(obj);
+    this.items.push(this._itemFor(obj));
+    this._rebuildLines();
+    this.select(obj.id);
+  };
+
+  Engine.prototype.removeObject = function (id) {
+    this.plot.objects = this.plot.objects.filter(function (obj) { return obj.id !== id; });
+    this.items = this.items.filter(function (item) { return item.obj.id !== id; });
+    if (this.selectedId === id) this.selectedId = null;
+    this._rebuildLines();
+    if (this.onSelect) this.onSelect(this.selected());
+  };
+
+  Engine.prototype.setGhost = function (obj) {
+    this.ghost = obj ? this._itemFor(obj) : null;
+  };
+
+  Engine.prototype.syncGhost = function () {
+    if (!this.ghost) return;
+    composeModel(this.ghost.obj.position, this.ghost.obj.rotation, this.ghost.obj.size, this.ghost.model);
+    this.ghost.color = PlotFormat.colorFor(this.ghost.obj);
+    this._applyLens(this.ghost);
   };
 
   Engine.prototype.layers = function () {
@@ -336,7 +386,7 @@ void main() {
     gl.enable(gl.DEPTH_TEST);
     gl.clearColor(0.071, 0.078, 0.094, 1);
     gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
-    if (!this.items.length) return;
+    if (!this.items.length && !this.ghost) return;
 
     const eye = this._matrices(canvas.clientWidth, canvas.clientHeight);
     const s = this._scratch;
@@ -349,12 +399,12 @@ void main() {
     gl.uniform3f(uEye, eye[0], eye[1], eye[2]);
     gl.bindVertexArray(this.box.vao);
 
-    const drawItem = (model, color, id) => {
+    const drawItem = (model, color, id, forced) => {
       M.multiply(s.viewProj, model, s.mvp);
       gl.uniformMatrix4fv(uMvp, false, s.mvp);
       gl.uniformMatrix4fv(uModel, false, model);
       gl.uniform3f(uColor, color[0], color[1], color[2]);
-      const selected = id && id === this.selectedId ? 1 : id && id === this.hoverId ? 0.38 : 0;
+      const selected = forced != null ? forced : id && id === this.selectedId ? 1 : id && id === this.hoverId ? 0.38 : 0;
       gl.uniform1f(uSelect, selected);
       gl.drawArrays(gl.TRIANGLES, 0, this.box.count);
     };
@@ -373,6 +423,10 @@ void main() {
       drawItem(item.model, item.color, item.obj.id);
       if (item.lens) drawItem(item.lens.model, item.lens.color, item.obj.id);
     });
+    if (this.ghost) {
+      drawItem(this.ghost.model, this.ghost.color, null, 0.85);
+      if (this.ghost.lens) drawItem(this.ghost.lens.model, this.ghost.lens.color, null, 0.2);
+    }
     if (this.ortho) gl.enable(gl.DEPTH_TEST);
 
     gl.useProgram(this.lines);
@@ -494,6 +548,39 @@ void main() {
     return bestFixture || bestOther;
   };
 
+  Engine.prototype.ray = function (clientX, clientY) {
+    const rect = this.canvas.getBoundingClientRect();
+    const x = clientX - rect.left;
+    const y = clientY - rect.top;
+    if (!rect.width || !rect.height) return null;
+    this._matrices(rect.width, rect.height);
+    const inv = this._scratch.inv;
+    if (!M.invert(this._scratch.viewProj, inv)) return null;
+    const ndcX = (x / rect.width) * 2 - 1;
+    const ndcY = 1 - (y / rect.height) * 2;
+    const near = [0, 0, 0];
+    const far = [0, 0, 0];
+    M.transformPoint(inv, [ndcX, ndcY, -1], near);
+    M.transformPoint(inv, [ndcX, ndcY, 1], far);
+    const dir = [far[0] - near[0], far[1] - near[1], far[2] - near[2]];
+    const len = Math.hypot(dir[0], dir[1], dir[2]) || 1;
+    return {
+      origin: near,
+      dir: [dir[0] / len, dir[1] / len, dir[2] / len],
+      x: x,
+      y: y,
+      width: rect.width,
+      height: rect.height,
+    };
+  };
+
+  Engine.prototype.hitPlane = function (ray, y) {
+    if (!ray || Math.abs(ray.dir[1]) < 1e-6) return null;
+    const t = (y - ray.origin[1]) / ray.dir[1];
+    if (t < 0) return null;
+    return [ray.origin[0] + ray.dir[0] * t, y, ray.origin[2] + ray.dir[2] * t];
+  };
+
   Engine.prototype._bindInput = function () {
     const canvas = this.canvas;
     const self = this;
@@ -504,8 +591,50 @@ void main() {
       self.distance = Math.min(140, Math.max(3, self.distance * factor));
     }, { passive: false });
 
+    function aimGhost(clientX, clientY) {
+      if (self.tool !== "place" || !self.ghost) return;
+      const hit = self.hitPlane(self.ray(clientX, clientY), self.placeHeight);
+      if (!hit) return;
+      self.ghost.obj.position[0] = hit[0];
+      self.ghost.obj.position[1] = self.placeHeight;
+      self.ghost.obj.position[2] = hit[2];
+      self.syncGhost();
+    }
+
+    function moveSelected(e) {
+      const item = self.items.find(function (entry) { return entry.obj.id === self._drag.id; });
+      if (!item) return;
+      if (e.shiftKey) {
+        const dy = e.clientY - self._drag.y;
+        item.obj.position[1] = Math.round(Math.max(0, self._drag.baseY - dy * self.distance * 0.0022) * 100) / 100;
+        self._drag.planeY = item.obj.position[1];
+      } else {
+        const hit = self.hitPlane(self.ray(e.clientX, e.clientY), self._drag.planeY);
+        if (!hit) return;
+        item.obj.position[0] = Math.round(hit[0] * 100) / 100;
+        item.obj.position[1] = Math.round(self._drag.planeY * 100) / 100;
+        item.obj.position[2] = Math.round(hit[2] * 100) / 100;
+        self._drag.baseY = self._drag.planeY;
+        self._drag.y = e.clientY;
+      }
+      self.refresh(item.obj.id);
+      if (self.onTransform) self.onTransform(item.obj);
+    }
+
     canvas.addEventListener("pointerdown", function (e) {
-      self._drag = { x: e.clientX, y: e.clientY, button: e.button, moved: false };
+      const drag = { x: e.clientX, y: e.clientY, button: e.button, moved: false, moving: false, id: null, planeY: 0, baseY: 0 };
+      if (e.button === 0 && self.tool === "move") {
+        const rect = canvas.getBoundingClientRect();
+        const hit = self._pick(e.clientX - rect.left, e.clientY - rect.top, rect.width, rect.height);
+        if (hit) {
+          drag.moving = true;
+          drag.id = hit.id;
+          drag.planeY = hit.position[1];
+          drag.baseY = hit.position[1];
+          self.select(hit.id);
+        }
+      }
+      self._drag = drag;
       try { canvas.setPointerCapture(e.pointerId); } catch (err) { /* pointer already gone */ }
     });
     canvas.addEventListener("pointermove", function (e) {
@@ -513,12 +642,20 @@ void main() {
       const x = e.clientX - rect.left;
       const y = e.clientY - rect.top;
       if (!self._drag) {
+        aimGhost(e.clientX, e.clientY);
         const hit = self._pick(x, y, rect.width, rect.height);
-        const next = hit ? hit.id : null;
-        if (next !== self.hoverId) {
-          self.hoverId = next;
-          canvas.style.cursor = next ? "pointer" : "grab";
-        }
+        self.hoverId = hit ? hit.id : null;
+        canvas.style.cursor = self.tool === "place"
+          ? "crosshair"
+          : self.hoverId ? (self.tool === "move" ? "move" : "pointer") : "grab";
+        return;
+      }
+      if (self._drag.moving) {
+        const dx = e.clientX - self._drag.x;
+        const dy = e.clientY - self._drag.y;
+        if (!self._drag.moved && Math.hypot(dx, dy) < 4) return;
+        self._drag.moved = true;
+        moveSelected(e);
         return;
       }
       const dx = e.clientX - self._drag.x;
@@ -527,6 +664,7 @@ void main() {
       self._drag.moved = true;
       self._drag.x = e.clientX;
       self._drag.y = e.clientY;
+      aimGhost(e.clientX, e.clientY);
       if (self._drag.button === 0) {
         if (self.ortho) {
           self.ortho = false;
@@ -567,7 +705,12 @@ void main() {
       if (!self._drag) return;
       const drag = self._drag;
       self._drag = null;
-      if (drag.button !== 0 || drag.moved) return;
+      if (drag.button !== 0 || drag.moved || drag.moving) return;
+      if (self.tool === "place") {
+        const hit = self.hitPlane(self.ray(e.clientX, e.clientY), self.placeHeight);
+        if (hit && self.onPlace) self.onPlace(hit);
+        return;
+      }
       const rect = canvas.getBoundingClientRect();
       const hit = self._pick(e.clientX - rect.left, e.clientY - rect.top, rect.width, rect.height);
       self.select(hit ? hit.id : null);

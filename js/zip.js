@@ -35,15 +35,57 @@ var ZipReader = (function () {
     throw new Error("Сжатие ZIP № " + method + " не поддерживается.");
   }
 
-  async function unzip(buffer) {
+  function u64(view, offset) {
+    const lo = view.getUint32(offset, true);
+    const hi = view.getUint32(offset + 4, true);
+    if (hi > 0x1fffff) throw new Error("Файл внутри архива слишком большой.");
+    return hi * 0x100000000 + lo;
+  }
+
+  function zip64Catalog(view, eocd) {
+    const loc = eocd - 20;
+    if (loc < 0 || view.getUint32(loc, true) !== 0x07064b50) return null;
+    const offset = u64(view, loc + 8);
+    if (view.getUint32(offset, true) !== 0x06064b50) return null;
+    return { count: u64(view, offset + 32), cdOffset: u64(view, offset + 48) };
+  }
+
+  function zip64Extra(view, start, length, need) {
+    let cursor = start;
+    const end = start + length;
+    while (cursor + 4 <= end) {
+      const id = view.getUint16(cursor, true);
+      const size = view.getUint16(cursor + 2, true);
+      if (id === 1) {
+        let at = cursor + 4;
+        const read = function () {
+          const value = u64(view, at);
+          at += 8;
+          return value;
+        };
+        return {
+          uncomp: need.uncomp ? read() : null,
+          comp: need.comp ? read() : null,
+          offset: need.offset ? read() : null,
+        };
+      }
+      cursor += 4 + size;
+    }
+    return null;
+  }
+
+  async function unzip(buffer, keep) {
     const bytes = buffer instanceof Uint8Array ? buffer : new Uint8Array(buffer);
     const view = new DataView(bytes.buffer, bytes.byteOffset, bytes.byteLength);
     const eocd = findEocd(bytes);
     if (eocd < 0) throw new Error("Файл не похож на архив MVR.");
-    const count = view.getUint16(eocd + 10, true);
-    const cdOffset = view.getUint32(eocd + 16, true);
+    let count = view.getUint16(eocd + 10, true);
+    let cdOffset = view.getUint32(eocd + 16, true);
     if (count === 0xffff || cdOffset === 0xffffffff) {
-      throw new Error("Архив ZIP64 пока не читается.");
+      const zip64 = zip64Catalog(view, eocd);
+      if (!zip64) throw new Error("Архив ZIP64 без оглавления.");
+      count = zip64.count;
+      cdOffset = zip64.cdOffset;
     }
     const files = new Map();
     let cursor = cdOffset;
@@ -52,17 +94,27 @@ var ZipReader = (function () {
         throw new Error("Каталог архива повреждён.");
       }
       const method = view.getUint16(cursor + 10, true);
-      const compSize = view.getUint32(cursor + 20, true);
+      let compSize = view.getUint32(cursor + 20, true);
       const nameLen = view.getUint16(cursor + 28, true);
       const extraLen = view.getUint16(cursor + 30, true);
       const commentLen = view.getUint16(cursor + 32, true);
-      const localOffset = view.getUint32(cursor + 42, true);
-      const name = new TextDecoder("utf-8").decode(bytes.subarray(cursor + 46, cursor + 46 + nameLen)).replace(/\\/g, "/");
-      cursor += 46 + nameLen + extraLen + commentLen;
-      if (!name || name.endsWith("/")) continue;
+      let localOffset = view.getUint32(cursor + 42, true);
+      const nameStart = cursor + 46;
+      const name = new TextDecoder("utf-8").decode(bytes.subarray(nameStart, nameStart + nameLen)).replace(/\\/g, "/");
+      const extraStart = nameStart + nameLen;
       if (compSize === 0xffffffff || localOffset === 0xffffffff) {
-        throw new Error("Архив ZIP64 пока не читается.");
+        const extra = zip64Extra(view, extraStart, extraLen, {
+          uncomp: view.getUint32(cursor + 24, true) === 0xffffffff,
+          comp: compSize === 0xffffffff,
+          offset: localOffset === 0xffffffff,
+        });
+        if (!extra) throw new Error("Архив ZIP64 без размеров файла.");
+        if (extra.comp != null) compSize = extra.comp;
+        if (extra.offset != null) localOffset = extra.offset;
       }
+      cursor = extraStart + extraLen + commentLen;
+      if (!name || name.endsWith("/")) continue;
+      if (keep && !keep(name)) continue;
       files.set(name, await readEntry(view, bytes, localOffset, method, compSize));
     }
     return files;
