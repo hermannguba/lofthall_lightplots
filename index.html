@@ -16,9 +16,11 @@
       </div>
     </div>
     <div class="header-actions">
+      <button type="button" id="open-mvr">Открыть MVR</button>
       <button type="button" id="open-file">Открыть JSON</button>
       <button type="button" id="save-file">Скачать JSON</button>
       <input id="file" type="file" accept="application/json,.json" hidden>
+      <input id="mvr-file" type="file" accept=".mvr,application/octet-stream" hidden>
     </div>
   </header>
   <div class="workspace">
@@ -35,7 +37,7 @@
       </div>
       <p class="error" id="error" hidden></p>
       <p class="legend">X вправо · Y вверх · Z в глубину. Метры от центра авансцены.</p>
-      <p class="hint">Тяните левой кнопкой, чтобы крутить вид. Правая — сдвиг, колёсико — масштаб. Щелчок — карточка монтажа.</p>
+      <p class="hint">Тяните левой кнопкой, чтобы крутить вид. Правая — сдвиг, колёсико — масштаб. Щелчок — карточка монтажа. Сюда можно перетащить MVR или JSON.</p>
     </div>
     <aside>
       <section>
@@ -57,6 +59,8 @@
   </div>
   <script src="js/math.js"></script>
   <script src="js/plot.js"></script>
+  <script src="js/zip.js"></script>
+  <script src="js/mvr.js"></script>
   <script src="js/demo.js"></script>
   <script src="js/engine.js"></script>
   <script src="js/main.js"></script>

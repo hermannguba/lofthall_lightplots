@@ -8,6 +8,7 @@
   const errorEl = document.getElementById("error");
   const canvas = document.getElementById("view");
   const fileInput = document.getElementById("file");
+  const mvrInput = document.getElementById("mvr-file");
 
   const engine = new PlotEngine(canvas);
   const viewButtons = Array.from(document.querySelectorAll("[data-view]"));
@@ -139,11 +140,18 @@
   document.getElementById("open-file").addEventListener("click", function () {
     fileInput.click();
   });
+  document.getElementById("open-mvr").addEventListener("click", function () {
+    mvrInput.click();
+  });
   fileInput.addEventListener("change", function () {
     const file = fileInput.files && fileInput.files[0];
     fileInput.value = "";
-    if (!file) return;
-    readJson(file);
+    if (file) readIncoming(file);
+  });
+  mvrInput.addEventListener("change", function () {
+    const file = mvrInput.files && mvrInput.files[0];
+    mvrInput.value = "";
+    if (file) readIncoming(file);
   });
   document.getElementById("save-file").addEventListener("click", function () {
     if (!engine.plot) return;
@@ -162,8 +170,14 @@
   stage.addEventListener("drop", function (e) {
     e.preventDefault();
     const file = e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0];
-    if (file) readJson(file);
+    if (file) readIncoming(file);
   });
+
+  function readIncoming(file) {
+    const name = file.name.toLowerCase();
+    if (name.endsWith(".mvr")) readMvr(file);
+    else readJson(file);
+  }
 
   function readJson(file) {
     const reader = new FileReader();
@@ -175,6 +189,20 @@
       }
     };
     reader.readAsText(file);
+  }
+
+  function readMvr(file) {
+    const reader = new FileReader();
+    reader.onload = function () {
+      venueNote.textContent = "Читаю MVR…";
+      showError("");
+      MvrImport.parse(reader.result, file.name).then(function (plot) {
+        usePlot(plot);
+      }).catch(function (err) {
+        showError(err && err.message ? err.message : "Не удалось прочитать MVR.");
+      });
+    };
+    reader.readAsArrayBuffer(file);
   }
 
   layersEl.addEventListener("change", function (e) {
