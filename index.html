@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Loft Hall — схема</title>
+  <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <span class="mark">LX</span>
+      <div>
+        <p class="venue-note" id="venue-note">Схема площадки</p>
+        <h1 id="venue-name">Loft Hall</h1>
+      </div>
+    </div>
+    <div class="header-actions">
+      <button type="button" id="open-file">Открыть JSON</button>
+      <button type="button" id="save-file">Скачать JSON</button>
+      <input id="file" type="file" accept="application/json,.json" hidden>
+    </div>
+  </header>
+  <div class="workspace">
+    <div class="stage">
+      <canvas id="view"></canvas>
+      <div class="tools">
+        <div class="views" role="group" aria-label="Проекции">
+          <button type="button" data-view="orbit" class="is-on">3D</button>
+          <button type="button" data-view="top">Сверху</button>
+          <button type="button" data-view="front">Из зала</button>
+          <button type="button" data-view="side">Сбоку</button>
+        </div>
+        <button type="button" id="frame">Вписать</button>
+      </div>
+      <p class="error" id="error" hidden></p>
+      <p class="legend">X вправо · Y вверх · Z в глубину. Метры от центра авансцены.</p>
+      <p class="hint">Тяните левой кнопкой, чтобы крутить вид. Правая — сдвиг, колёсико — масштаб. Щелчок — карточка монтажа.</p>
+    </div>
+    <aside>
+      <section>
+        <h2>Слои</h2>
+        <div id="layers"></div>
+      </section>
+      <section>
+        <h2>Монтаж</h2>
+        <div id="inspector"></div>
+      </section>
+      <section class="grow">
+        <div class="section-head">
+          <h2>Объекты</h2>
+          <span class="meta" id="count"></span>
+        </div>
+        <div id="list"></div>
+      </section>
+    </aside>
+  </div>
+  <script src="js/math.js"></script>
+  <script src="js/plot.js"></script>
+  <script src="js/demo.js"></script>
+  <script src="js/engine.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
