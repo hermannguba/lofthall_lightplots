@@ -30,6 +30,8 @@ var FixtureLibrary = (function () {
       layer: String(raw.layer || ""),
       color: typeof raw.color === "string" ? raw.color : "",
       notes: String(raw.notes || ""),
+      gdtfId: String(raw && raw.gdtfId || ""),
+      modes: Array.isArray(raw && raw.modes) ? raw.modes.map(String) : [],
     };
   }
 
@@ -52,6 +54,7 @@ var FixtureLibrary = (function () {
     add: function (raw) {
       const type = normalize(raw);
       type.id = "t-" + Date.now().toString(36) + "-" + Math.random().toString(36).slice(2, 6);
+      if (raw && raw.storeMesh) type.gdtfId = type.id;
       items.push(type);
       persist();
       return type;

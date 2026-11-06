@@ -103,6 +103,7 @@
       rotation: [0, 0, 0],
       color: type.color || "",
       fixtureType: type.fixtureType || "",
+      gdtfId: type.gdtfId || "",
     });
     renderLibrary();
     updateHint();
@@ -139,6 +140,7 @@
       circuit: "",
       hang: "",
       notes: type.notes || "",
+      gdtfId: type.gdtfId || "",
     };
     engine.addObject(obj);
     renderLayers();
@@ -156,6 +158,7 @@
       layer: obj.layer,
       color: obj.color || "",
       notes: "",
+      gdtfId: obj.gdtfId || "",
     });
     renderLibrary();
   }
@@ -291,7 +294,7 @@
     libraryEl.innerHTML = FixtureLibrary.items().map(function (type) {
       const on = placing && placing.id === type.id ? " is-on" : "";
       return "<div class=\"lib-row\"><button type=\"button\" class=\"lib-item" + on + "\" data-type=\"" + escapeHtml(type.id) + "\">" +
-        "<span>" + escapeHtml(type.name) + "</span><span class=\"meta\">" + escapeHtml(PlotFormat.KINDS[type.kind]) + "</span></button>" +
+        "<span>" + escapeHtml(type.name) + "</span><span class=\"meta\">" + escapeHtml(type.gdtfId ? (type.mode || "GDTF") : PlotFormat.KINDS[type.kind]) + "</span></button>" +
         "<button type=\"button\" class=\"lib-x\" data-remove=\"" + escapeHtml(type.id) + "\" aria-label=\"Убрать " + escapeHtml(type.name) + " из базы\">×</button></div>";
     }).join("");
   }
@@ -306,8 +309,29 @@
     renderInspector(engine.selected());
   }
 
+  function sameFixture(a, b) {
+    const fold = function (value) { return String(value || "").toLowerCase().replace(/[^a-z0-9]+/g, ""); };
+    const x = fold(a);
+    const y = fold(b);
+    if (!x || !y) return false;
+    if (x === y) return true;
+    const short = x.length < y.length ? x : y;
+    const long = short === x ? y : x;
+    return short.length >= 8 && long.indexOf(short) !== -1;
+  }
+
+  function attachProfiles(plot) {
+    const types = FixtureLibrary.items().filter(function (type) { return type.gdtfId; });
+    plot.objects.forEach(function (obj) {
+      if (obj.gdtfId && types.some(function (type) { return type.gdtfId === obj.gdtfId; })) return;
+      const hit = types.find(function (type) { return sameFixture(type.fixtureType, obj.fixtureType) || sameFixture(type.name, obj.fixtureType); });
+      if (hit) obj.gdtfId = hit.gdtfId;
+    });
+  }
+
   function usePlot(data) {
     const plot = PlotFormat.parsePlot(data);
+    attachProfiles(plot);
     cancelPlace();
     engine.load(plot);
     moveButton.classList.remove("is-on");
@@ -372,7 +396,8 @@
 
   function readIncoming(file) {
     const name = file.name.toLowerCase();
-    if (name.endsWith(".mvr") || name.endsWith(".zip")) readMvr(file);
+    if (name.endsWith(".gdtf")) readGdtf(file);
+    else if (name.endsWith(".mvr") || name.endsWith(".zip")) readMvr(file);
     else if (name.endsWith(".json")) readJson(file);
     else {
       file.slice(0, 4).arrayBuffer().then(function (buf) {
@@ -413,6 +438,40 @@
     reader.readAsArrayBuffer(file);
   }
 
+  function readGdtf(file) {
+    showError("");
+    return new Promise(function (resolve) {
+      const reader = new FileReader();
+      reader.onerror = function () {
+        showError("Не удалось прочитать " + file.name + ".");
+        resolve();
+      };
+      reader.onload = function () {
+        GdtfProfile.parse(reader.result).then(function (profile) {
+          const type = FixtureLibrary.add({
+            name: profile.name,
+            kind: "fixture",
+            fixtureType: profile.fixtureType,
+            mode: profile.mode,
+            modes: profile.modes,
+            size: profile.size,
+            layer: "Свет",
+            notes: profile.notes,
+            storeMesh: true,
+          });
+          profile.id = type.id;
+          return GdtfStore.put(type.id, profile).then(function () {
+            engine.uploadProfile(profile);
+            beginPlace(type);
+          });
+        }).catch(function (err) {
+          showError(err && err.message ? err.message : "Не удалось прочитать GDTF.");
+        }).then(resolve);
+      };
+      reader.readAsArrayBuffer(file);
+    });
+  }
+
   layersEl.addEventListener("change", function (e) {
     const input = e.target;
     if (!input.dataset || !input.dataset.layer) return;
@@ -448,8 +507,13 @@
   libraryEl.addEventListener("click", function (e) {
     const remove = e.target.closest("[data-remove]");
     if (remove) {
+      const type = FixtureLibrary.items().find(function (item) { return item.id === remove.dataset.remove; });
       if (placing && placing.id === remove.dataset.remove) cancelPlace();
       FixtureLibrary.remove(remove.dataset.remove);
+      if (type && type.gdtfId && !FixtureLibrary.items().some(function (item) { return item.gdtfId === type.gdtfId; })) {
+        GdtfStore.remove(type.gdtfId);
+        engine.dropProfile(type.gdtfId);
+      }
       renderLibrary();
       return;
     }
@@ -459,6 +523,14 @@
     if (type) beginPlace(type);
   });
 
+  const gdtfInput = document.getElementById("gdtf-file");
+  gdtfInput.addEventListener("change", function () {
+    const files = Array.from(gdtfInput.files || []);
+    gdtfInput.value = "";
+    files.reduce(function (chain, file) {
+      return chain.then(function () { return readGdtf(file); });
+    }, Promise.resolve());
+  });
   document.getElementById("lib-add").addEventListener("click", function () {
     libForm.hidden = !libForm.hidden;
     if (!libForm.hidden) libForm.elements.name.focus();
@@ -535,6 +607,9 @@
 
   renderLibrary();
   updateHint();
+  GdtfStore.all().then(function (profiles) {
+    profiles.forEach(function (profile) { engine.uploadProfile(profile); });
+  });
   try {
     usePlot(demoPlot);
   } catch (err) {

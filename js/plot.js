@@ -58,6 +58,7 @@ var PlotFormat = (function () {
         circuit: text(raw.circuit),
         hang: text(raw.hang),
         notes: text(raw.notes),
+        gdtfId: text(raw.gdtfId),
       };
     });
 

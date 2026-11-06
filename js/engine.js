@@ -150,6 +150,7 @@ void main() {
     this.tool = "look";
     this.ghost = null;
     this.placeHeight = 0;
+    this.profiles = new Map();
     this.onSelect = null;
     this.onViewChange = null;
     this.onTransform = null;
@@ -255,6 +256,53 @@ void main() {
 
   Engine.prototype.setGhost = function (obj) {
     this.ghost = obj ? this._itemFor(obj) : null;
+  };
+
+  Engine.prototype._uploadMesh = function (positions, normals) {
+    if (!positions || positions.length < 9) return null;
+    const gl = this.gl;
+    const count = positions.length / 3;
+    const data = new Float32Array(count * 6);
+    for (let i = 0; i < count; i++) {
+      data[i * 6] = positions[i * 3];
+      data[i * 6 + 1] = positions[i * 3 + 1];
+      data[i * 6 + 2] = positions[i * 3 + 2];
+      data[i * 6 + 3] = normals[i * 3] || 0;
+      data[i * 6 + 4] = normals[i * 3 + 1] || 1;
+      data[i * 6 + 5] = normals[i * 3 + 2] || 0;
+    }
+    const buffer = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
+    gl.bufferData(gl.ARRAY_BUFFER, data, gl.STATIC_DRAW);
+    const vao = gl.createVertexArray();
+    gl.bindVertexArray(vao);
+    gl.enableVertexAttribArray(0);
+    gl.vertexAttribPointer(0, 3, gl.FLOAT, false, 24, 0);
+    gl.enableVertexAttribArray(1);
+    gl.vertexAttribPointer(1, 3, gl.FLOAT, false, 24, 12);
+    gl.bindVertexArray(null);
+    return { vao: vao, buffer: buffer, count: count };
+  };
+
+  Engine.prototype.uploadProfile = function (profile) {
+    if (!profile || !profile.id) return;
+    this.dropProfile(profile.id);
+    this.profiles.set(profile.id, {
+      body: this._uploadMesh(profile.positions, profile.normals),
+      lens: this._uploadMesh(profile.lensPositions, profile.lensNormals),
+    });
+  };
+
+  Engine.prototype.dropProfile = function (id) {
+    const profile = this.profiles.get(id);
+    if (!profile) return;
+    const gl = this.gl;
+    [profile.body, profile.lens].forEach(function (part) {
+      if (!part) return;
+      gl.deleteVertexArray(part.vao);
+      gl.deleteBuffer(part.buffer);
+    });
+    this.profiles.delete(id);
   };
 
   Engine.prototype.syncGhost = function () {
@@ -399,7 +447,34 @@ void main() {
     gl.uniform3f(uEye, eye[0], eye[1], eye[2]);
     gl.bindVertexArray(this.box.vao);
 
+    const drawMesh = (gpu, model, color, id, forced) => {
+      if (!gpu) return;
+      gl.bindVertexArray(gpu.vao);
+      M.multiply(s.viewProj, model, s.mvp);
+      gl.uniformMatrix4fv(uMvp, false, s.mvp);
+      gl.uniformMatrix4fv(uModel, false, model);
+      gl.uniform3f(uColor, color[0], color[1], color[2]);
+      const selected = forced != null ? forced : id && id === this.selectedId ? 1 : id && id === this.hoverId ? 0.38 : 0;
+      gl.uniform1f(uSelect, selected);
+      gl.drawArrays(gl.TRIANGLES, 0, gpu.count);
+    };
+
+    const drawFixture = (item, id, forced) => {
+      const profile = item.obj.gdtfId && this.profiles.get(item.obj.gdtfId);
+      if (profile) {
+        drawMesh(profile.body, item.model, item.color, id, forced);
+        if (profile.lens) {
+          const lensSelect = forced != null ? forced * 0.35 : id && id === this.selectedId ? 0.45 : 0;
+          drawMesh(profile.lens, item.model, [0.62, 0.7, 0.78], id, lensSelect);
+        }
+        return;
+      }
+      drawItem(item.model, item.color, id, forced);
+      if (item.lens) drawItem(item.lens.model, item.lens.color, id, forced);
+    };
+
     const drawItem = (model, color, id, forced) => {
+      gl.bindVertexArray(this.box.vao);
       M.multiply(s.viewProj, model, s.mvp);
       gl.uniformMatrix4fv(uMvp, false, s.mvp);
       gl.uniformMatrix4fv(uModel, false, model);
@@ -419,14 +494,8 @@ void main() {
     structures.forEach((item) => drawItem(item.model, item.color, item.obj.id));
     // In plan, the pipe sits above the hanging fixture and would hide it.
     if (this.ortho) gl.disable(gl.DEPTH_TEST);
-    fixtures.forEach((item) => {
-      drawItem(item.model, item.color, item.obj.id);
-      if (item.lens) drawItem(item.lens.model, item.lens.color, item.obj.id);
-    });
-    if (this.ghost) {
-      drawItem(this.ghost.model, this.ghost.color, null, 0.85);
-      if (this.ghost.lens) drawItem(this.ghost.lens.model, this.ghost.lens.color, null, 0.2);
-    }
+    fixtures.forEach((item) => drawFixture(item, item.obj.id));
+    if (this.ghost) drawFixture(this.ghost, null, 0.85);
     if (this.ortho) gl.enable(gl.DEPTH_TEST);
 
     gl.useProgram(this.lines);

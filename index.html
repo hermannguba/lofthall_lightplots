@@ -55,7 +55,12 @@
       <section>
         <div class="section-head">
           <h2>База</h2>
-          <button type="button" id="lib-add">Свой тип</button>
+          <div class="header-actions">
+            <label class="btn file-btn" title="Добавить прибор из файла GDTF">Импорт GDTF
+              <input id="gdtf-file" class="file-proxy" type="file" accept=".gdtf,application/zip" multiple>
+            </label>
+            <button type="button" id="lib-add">Свой тип</button>
+          </div>
         </div>
         <p class="empty">Выберите тип и щёлкните по полу.</p>
         <div id="library"></div>
@@ -93,6 +98,8 @@
   <script src="js/math.js"></script>
   <script src="js/plot.js"></script>
   <script src="js/zip.js"></script>
+  <script src="js/glb.js"></script>
+  <script src="js/gdtf.js"></script>
   <script src="js/mvr.js"></script>
   <script src="js/library.js"></script>
   <script src="js/demo.js"></script>
