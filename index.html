@@ -19,6 +19,9 @@
       <label class="btn file-btn">Открыть MVR
         <input id="mvr-file" class="file-proxy" type="file" accept=".mvr,.zip,application/zip">
       </label>
+      <label class="btn file-btn btn-accent">Импорт GDTF
+        <input id="gdtf-file" class="file-proxy" type="file" accept=".gdtf,application/zip" multiple>
+      </label>
       <label class="btn file-btn">Открыть JSON
         <input id="file" class="file-proxy" type="file" accept=".json,application/json">
       </label>
@@ -55,14 +58,10 @@
       <section>
         <div class="section-head">
           <h2>База</h2>
-          <div class="header-actions">
-            <label class="btn file-btn" title="Добавить прибор из файла GDTF">Импорт GDTF
-              <input id="gdtf-file" class="file-proxy" type="file" accept=".gdtf,application/zip" multiple>
-            </label>
-            <button type="button" id="lib-add">Свой тип</button>
-          </div>
+          <button type="button" id="lib-add">Свой тип</button>
         </div>
-        <p class="empty">Выберите тип и щёлкните по полу.</p>
+        <label class="btn gdtf-wide" for="gdtf-file">Импорт GDTF</label>
+        <p class="empty">Выберите тип и щёлкните по полу. GDTF добавляется кнопкой сверху или здесь.</p>
         <div id="library"></div>
         <form id="lib-form" hidden>
           <label class="stack">Название<input name="name" required autocomplete="off"></label>
