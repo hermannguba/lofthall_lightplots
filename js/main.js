@@ -23,6 +23,9 @@
   const saveState = document.getElementById("save-state");
   const modelsEl = document.getElementById("models");
   const modelForm = document.getElementById("model-form");
+  const modelFilter = document.getElementById("model-filter");
+  const libraryFilter = document.getElementById("library-filter");
+  const catalogState = document.getElementById("catalog-state");
 
   const engine = new PlotEngine(canvas);
   const viewButtons = Array.from(document.querySelectorAll("[data-view]"));
@@ -319,8 +322,17 @@
     countEl.textContent = String(engine.plot.objects.length);
   }
 
+  function matchesQuery(query, parts) {
+    if (!query) return true;
+    return parts.some(function (part) { return String(part || "").toLowerCase().indexOf(query) !== -1; });
+  }
+
   function renderLibrary() {
-    libraryEl.innerHTML = FixtureLibrary.items().map(function (type) {
+    const query = libraryFilter ? libraryFilter.value.trim().toLowerCase() : "";
+    const rows = FixtureLibrary.items().filter(function (type) {
+      return matchesQuery(query, [type.name, type.fixtureType, type.mode, type.notes]);
+    });
+    libraryEl.innerHTML = rows.map(function (type) {
       const on = placing && placing.id === type.id ? " is-on" : "";
       return "<div class=\"lib-row\"><button type=\"button\" class=\"lib-item" + on + "\" data-type=\"" + escapeHtml(type.id) + "\">" +
         "<span>" + escapeHtml(type.name) + "</span><span class=\"meta\">" + escapeHtml(type.modelId ? "3D" : type.gdtfId ? (type.mode || "GDTF") : PlotFormat.KINDS[type.kind]) + "</span></button>" +
@@ -632,12 +644,18 @@
   }
 
   function renderModels() {
-    modelsEl.innerHTML = modelRecords.map(function (model) {
+    const query = modelFilter ? modelFilter.value.trim().toLowerCase() : "";
+    const rows = modelRecords.filter(function (model) {
+      return matchesQuery(query, [model.name, model.fileName]);
+    }).slice().sort(function (a, b) {
+      return a.name.localeCompare(b.name, "ru");
+    });
+    modelsEl.innerHTML = rows.map(function (model) {
       const cat = ModelMesh.CATEGORIES[model.category];
       const on = placing && placing.modelId === model.id ? " is-on" : "";
       const size = model.size.map(function (n) { return fmt(n); }).join("×");
-      return "<div class=\"lib-row\"><button type=\"button\" class=\"lib-item" + on + "\" data-model=\"" + escapeHtml(model.id) + "\" title=\"" + escapeHtml(cat ? cat.label : "") + "\">" +
-        "<span>" + escapeHtml(model.name) + "</span><span class=\"meta\">" + escapeHtml((cat && cat.short) || size) + "</span></button>" +
+      return "<div class=\"lib-row\"><button type=\"button\" class=\"lib-item" + on + "\" data-model=\"" + escapeHtml(model.id) + "\" title=\"" + escapeHtml((cat ? cat.label + " · " : "") + size) + "\">" +
+        "<span>" + escapeHtml(model.name) + "</span><span class=\"meta\">" + escapeHtml(size) + "</span></button>" +
         "<button type=\"button\" class=\"lib-x\" data-model-remove=\"" + escapeHtml(model.id) + "\" aria-label=\"Убрать " + escapeHtml(model.name) + " из библиотеки\">×</button></div>";
     }).join("");
   }
@@ -669,6 +687,8 @@
         if (obj.modelId === id) obj.modelId = "";
       });
     }
+    const removed = modelRecords.find(function (model) { return model.id === id; });
+    if (removed && (removed.source === "prolyte" || String(removed.id).indexOf("prolyte-") === 0)) Catalog.dismiss(removed.id);
     FixtureLibrary.forgetModel(id);
     engine.dropModel(id);
     modelRecords = modelRecords.filter(function (model) { return model.id !== id; });
@@ -697,6 +717,25 @@
       const plot = currentPlots.find(function (item) { return item.id === data.session.plotId; }) || currentPlots[0];
       renderModels();
       openRecord(plot);
+      Catalog.install({
+        models: function () { return modelRecords; },
+        addModel: function (record, mesh) {
+          engine.uploadModel(record.id, mesh);
+          modelRecords.push(record);
+          renderModels();
+        },
+        addFixture: function (type, profile) {
+          engine.uploadProfile(profile);
+          renderLibrary();
+        },
+        progress: function (text) {
+          catalogState.hidden = !text;
+          catalogState.textContent = text || "";
+        },
+      }).catch(function (err) {
+        catalogState.hidden = false;
+        catalogState.textContent = err && err.message ? err.message : "Каталог не загрузился.";
+      });
     }).catch(function (err) {
       fail(err);
       try { usePlot(demoPlot); } catch (plotErr) { showError(plotErr.message); }
@@ -877,6 +916,7 @@
     if (remove) {
       const type = FixtureLibrary.items().find(function (item) { return item.id === remove.dataset.remove; });
       if (placing && placing.id === remove.dataset.remove) cancelPlace();
+      if (type && String(type.id).indexOf("gdtf-") === 0) Catalog.dismiss(type.id);
       FixtureLibrary.remove(remove.dataset.remove);
       if (type && type.gdtfId && !FixtureLibrary.items().some(function (item) { return item.gdtfId === type.gdtfId; })) {
         GdtfStore.remove(type.gdtfId);
@@ -1025,6 +1065,8 @@
     enqueue(task).catch(fail);
   });
 
+  modelFilter.addEventListener("input", renderModels);
+  libraryFilter.addEventListener("input", renderLibrary);
   document.getElementById("model-add").addEventListener("click", function () {
     modelForm.hidden = !modelForm.hidden;
     if (!modelForm.hidden) modelForm.elements.name.focus();

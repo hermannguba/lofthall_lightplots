@@ -60,6 +60,15 @@ var FixtureLibrary = (function () {
       persist();
       return type;
     },
+    ensure: function (raw) {
+      const type = normalize(raw);
+      if (raw && raw.storeMesh) type.gdtfId = type.id;
+      const found = items.find(function (item) { return item.id === type.id; });
+      if (found) return found;
+      items.push(type);
+      persist();
+      return type;
+    },
     remove: function (id) {
       items = items.filter(function (type) { return type.id !== id; });
       persist();

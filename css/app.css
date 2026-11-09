@@ -354,12 +354,12 @@ dd {
 }
 
 #library, #models {
-  max-height: 168px;
+  max-height: 240px;
   overflow: auto;
   margin: 8px -14px 0;
 }
 
-#models { max-height: 140px; }
+#models { max-height: 220px; }
 
 #model-form { margin-top: 8px; }
 #model-form[hidden] { display: none; }
