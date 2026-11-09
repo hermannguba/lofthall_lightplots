@@ -262,6 +262,88 @@ var MvrImport = (function () {
     return Math.round(n * 1000) / 1000;
   }
 
+  let prolyteCatalog = null;
+
+  function loadProlyte() {
+    if (prolyteCatalog) return prolyteCatalog;
+    prolyteCatalog = fetch("samples/models/prolyte/catalog.json").then(function (res) {
+      if (!res.ok) return [];
+      return res.json();
+    }).then(function (rows) {
+      return Array.isArray(rows) ? rows : [];
+    }).catch(function () {
+      return [];
+    });
+    return prolyteCatalog;
+  }
+
+  function prolyteCode(name) {
+    return String(name || "")
+      .replace(/^Prolyte\s+/i, "")
+      .split("·")[0]
+      .replace(/\s+/g, "")
+      .toUpperCase();
+  }
+
+  function fallbackProlyte(text) {
+    const src = String(text || "").toUpperCase();
+    const straight = /H(30|40)V[\s_-]*L\s*(\d{3})/.exec(src);
+    if (!straight) return null;
+    const code = "H" + straight[1] + "V-L" + straight[2];
+    const section = straight[1] === "30" ? 0.287 : 0.387;
+    return {
+      id: "prolyte-" + code.toLowerCase(),
+      name: "Prolyte " + code,
+      size: [Number(straight[2]) / 100, section, section],
+    };
+  }
+
+  function matchProlyte(text, table) {
+    const hay = String(text || "").toUpperCase().replace(/\s+/g, "");
+    if (!hay) return null;
+    let best = null;
+    (table || []).forEach(function (item) {
+      const code = prolyteCode(item.name);
+      if (code.length < 6 || hay.indexOf(code) === -1) return;
+      if (!best || code.length > best.code.length) best = { code: code, item: item };
+    });
+    if (best) {
+      return {
+        id: best.item.id,
+        name: best.item.name.split("·")[0].trim(),
+        size: best.item.size.slice(0, 3).map(Number),
+      };
+    }
+    return fallbackProlyte(text);
+  }
+
+  function symbolLabel(el, symdefs) {
+    const geos = direct(el, "Geometries");
+    if (!geos) return "";
+    const names = [];
+    for (const child of geos.children) {
+      if (localName(child) !== "symbol") continue;
+      const id = attr(child, "symdef").toLowerCase();
+      if (id && symdefs.has(id)) names.push(symdefs.get(id));
+    }
+    return names.filter(Boolean).join(" ");
+  }
+
+  // world is the MVR matrix: columns are the local axes, translation in millimetres.
+  function mvrLocal(world, x, y, z) {
+    const dx = x - world[3];
+    const dy = y - world[7];
+    const dz = z - world[11];
+    function axis(i) {
+      const ax = world[i];
+      const ay = world[4 + i];
+      const az = world[8 + i];
+      const len = Math.hypot(ax, ay, az) || 1;
+      return (dx * ax + dy * ay + dz * az) / len;
+    }
+    return [axis(0), axis(1), axis(2)];
+  }
+
   async function parse(buffer, fileName) {
     const files = await ZipReader.unzip(buffer, function (name) {
       return /\.(xml|gdtf)$/i.test(name);
@@ -294,8 +376,16 @@ var MvrImport = (function () {
       return pending;
     }
 
+    const symdefs = new Map();
+    elements(doc, "Symdef").forEach(function (node) {
+      const id = attr(node, "uuid").toLowerCase();
+      if (id) symdefs.set(id, attr(node, "name"));
+    });
+    const prolyte = await loadProlyte();
+
     const objects = [];
     const seen = new Set();
+    const trussSpans = [];
 
     async function addObject(el, world, layer, kind) {
       const rawId = attr(el, "uuid") || (kind + "-" + (objects.length + 1));
@@ -319,12 +409,25 @@ var MvrImport = (function () {
       if (info && info.channels) notes.push(info.channels + " ch");
       const point = positionOf(world);
       const rotation = euler(world);
-      const size = info && info.size ? clampSize(info.size) : (DEFAULT_SIZE[kind] || DEFAULT_SIZE.structure);
+      let size = info && info.size ? clampSize(info.size) : (DEFAULT_SIZE[kind] || DEFAULT_SIZE.structure);
+      let objectName = attr(el, "name") || fixtureTypeName(spec, info) || id;
+      let modelId = "";
+      if (kind === "structure") {
+        const label = [attr(el, "name"), symbolLabel(el, symdefs)].filter(Boolean).join(" ");
+        const piece = matchProlyte(label, prolyte);
+        if (piece) {
+          modelId = piece.id;
+          objectName = piece.name;
+          size = piece.size;
+          if (label && notes.indexOf(label) === -1) notes.push(label);
+          trussSpans.push({ name: piece.name, world: world, size: piece.size });
+        }
+      }
       objects.push({
         id: id,
-        name: attr(el, "name") || fixtureTypeName(spec, info) || id,
+        name: objectName,
         kind: kind,
-        layer: layer || "Сцена",
+        layer: kind === "structure" && modelId ? "Фермы" : (layer || "Сцена"),
         position: point.map(round3),
         size: size.map(round3),
         rotation: rotation,
@@ -334,6 +437,8 @@ var MvrImport = (function () {
         address: patch.address,
         hang: hang,
         notes: notes.join(" · "),
+        modelId: modelId,
+        mvr: [world[3], world[7], world[11]],
       });
     }
 
@@ -350,13 +455,35 @@ var MvrImport = (function () {
     await walk(scene, identity(), "Сцена");
     if (!objects.length) throw new Error("В MVR не нашлось приборов. Нужен файл сцены из Capture, Vectorworks или grandMA.");
 
+    objects.forEach(function (obj) {
+      if (obj.kind !== "fixture" || obj.hang || !obj.mvr) return;
+      let best = null;
+      trussSpans.forEach(function (span) {
+        const local = mvrLocal(span.world, obj.mvr[0], obj.mvr[1], obj.mvr[2]);
+        const half = span.size.map(function (n) { return n * 500; });
+        const onLength = Math.abs(local[0]) <= half[0] + 200;
+        const onSection = Math.hypot(local[1], local[2] + half[2]) <= Math.max(half[1], half[2]) + 450;
+        const below = local[2] <= half[2] + 50;
+        if (!onLength || !onSection || !below) return;
+        const rank = Math.abs(local[0]) + Math.abs(local[2]);
+        if (!best || rank < best.rank) best = { rank: rank, name: span.name };
+      });
+      if (best) obj.hang = best.name;
+      delete obj.mvr;
+    });
+    objects.forEach(function (obj) { delete obj.mvr; });
+
     const fixtures = objects.filter(function (obj) { return obj.kind === "fixture"; }).length;
+    const trusses = trussSpans.length;
     const title = (fileName || "MVR").replace(/\.[^.]+$/, "") || "MVR";
     const provider = [attr(root, "provider"), attr(root, "providerVersion")].filter(Boolean).join(" ");
     return {
       venue: {
         name: title,
-        note: "Импорт MVR" + (provider ? " · " + provider : "") + " · приборов " + fixtures + ". Миллиметры и Z вверх переведены в метры.",
+        note: "Импорт MVR" + (provider ? " · " + provider : "")
+          + " · приборов " + fixtures
+          + (trusses ? " · ферм Prolyte " + trusses : "")
+          + ". Миллиметры и Z вверх переведены в метры.",
       },
       objects: objects,
     };
