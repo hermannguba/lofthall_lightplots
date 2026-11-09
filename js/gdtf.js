@@ -335,47 +335,8 @@ var GdtfProfile = (function () {
   return { parse: parse };
 })();
 
-var GdtfStore = (function () {
-  function open() {
-    return new Promise(function (resolve, reject) {
-      const request = indexedDB.open("lightplot", 1);
-      request.onupgradeneeded = function () {
-        if (!request.result.objectStoreNames.contains("profiles")) request.result.createObjectStore("profiles");
-      };
-      request.onsuccess = function () { resolve(request.result); };
-      request.onerror = function () { reject(request.error || new Error("База профилей недоступна.")); };
-    });
-  }
-
-  function run(mode, fn) {
-    return open().then(function (db) {
-      return new Promise(function (resolve, reject) {
-        const tx = db.transaction("profiles", mode);
-        const store = tx.objectStore("profiles");
-        const request = fn(store);
-        tx.oncomplete = function () { resolve(request ? request.result : undefined); };
-        tx.onerror = function () { reject(tx.error || new Error("Не удалось записать профиль.")); };
-      });
-    });
-  }
-
-  return {
-    put: function (id, profile) {
-      profile.id = id;
-      return run("readwrite", function (store) { return store.put(profile, id); });
-    },
-    remove: function (id) {
-      return run("readwrite", function (store) { return store.delete(id); }).catch(function () {});
-    },
-    all: function () {
-      return open().then(function (db) {
-        return new Promise(function (resolve, reject) {
-          const tx = db.transaction("profiles", "readonly");
-          const request = tx.objectStore("profiles").getAll();
-          request.onsuccess = function () { resolve(request.result || []); };
-          request.onerror = function () { reject(request.error); };
-        });
-      }).catch(function () { return []; });
-    },
-  };
-})();
+var GdtfStore = {
+  put: function (id, profile) { return PlotDb.putProfile(id, profile); },
+  remove: function (id) { return PlotDb.removeProfile(id); },
+  all: function () { return PlotDb.allProfiles(); },
+};

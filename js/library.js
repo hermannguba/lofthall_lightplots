@@ -31,6 +31,7 @@ var FixtureLibrary = (function () {
       color: typeof raw.color === "string" ? raw.color : "",
       notes: String(raw.notes || ""),
       gdtfId: String(raw && raw.gdtfId || ""),
+      modelId: String(raw && raw.modelId || ""),
       modes: Array.isArray(raw && raw.modes) ? raw.modes.map(String) : [],
     };
   }
@@ -62,6 +63,16 @@ var FixtureLibrary = (function () {
     remove: function (id) {
       items = items.filter(function (type) { return type.id !== id; });
       persist();
+    },
+    forgetModel: function (modelId) {
+      let changed = false;
+      items.forEach(function (type) {
+        if (type.modelId === modelId) {
+          type.modelId = "";
+          changed = true;
+        }
+      });
+      if (changed) persist();
     },
   };
 })();

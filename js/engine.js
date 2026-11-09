@@ -151,6 +151,7 @@ void main() {
     this.ghost = null;
     this.placeHeight = 0;
     this.profiles = new Map();
+    this.models = new Map();
     this.onSelect = null;
     this.onViewChange = null;
     this.onTransform = null;
@@ -303,6 +304,21 @@ void main() {
       gl.deleteBuffer(part.buffer);
     });
     this.profiles.delete(id);
+  };
+
+  Engine.prototype.uploadModel = function (id, mesh) {
+    if (!id || !mesh) return;
+    this.dropModel(id);
+    const gpu = this._uploadMesh(mesh.positions, mesh.normals);
+    if (gpu) this.models.set(id, gpu);
+  };
+
+  Engine.prototype.dropModel = function (id) {
+    const gpu = this.models.get(id);
+    if (!gpu) return;
+    this.gl.deleteVertexArray(gpu.vao);
+    this.gl.deleteBuffer(gpu.buffer);
+    this.models.delete(id);
   };
 
   Engine.prototype.syncGhost = function () {
@@ -484,6 +500,16 @@ void main() {
       gl.drawArrays(gl.TRIANGLES, 0, this.box.count);
     };
 
+    const drawSolid = (item, id, forced) => {
+      const custom = item.obj.modelId && this.models.get(item.obj.modelId);
+      if (custom) {
+        drawMesh(custom, item.model, item.color, id, forced);
+        return;
+      }
+      if (item.obj.kind === "fixture") drawFixture(item, id, forced);
+      else drawItem(item.model, item.color, id, forced);
+    };
+
     const structures = [];
     const fixtures = [];
     this.items.forEach((item) => {
@@ -491,11 +517,11 @@ void main() {
       if (item.obj.kind === "fixture") fixtures.push(item);
       else structures.push(item);
     });
-    structures.forEach((item) => drawItem(item.model, item.color, item.obj.id));
+    structures.forEach((item) => drawSolid(item, item.obj.id));
     // In plan, the pipe sits above the hanging fixture and would hide it.
     if (this.ortho) gl.disable(gl.DEPTH_TEST);
-    fixtures.forEach((item) => drawFixture(item, item.obj.id));
-    if (this.ghost) drawFixture(this.ghost, null, 0.85);
+    fixtures.forEach((item) => drawSolid(item, item.obj.id));
+    if (this.ghost) drawSolid(this.ghost, null, 0.85);
     if (this.ortho) gl.enable(gl.DEPTH_TEST);
 
     gl.useProgram(this.lines);

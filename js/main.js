@@ -16,10 +16,27 @@
   const placeLabel = document.getElementById("place-label");
   const placeHeight = document.getElementById("place-height");
   const moveButton = document.getElementById("tool-move");
+  const projectSelect = document.getElementById("project-select");
+  const plotSelect = document.getElementById("plot-select");
+  const nameForm = document.getElementById("name-form");
+  const nameSubmit = document.getElementById("name-submit");
+  const saveState = document.getElementById("save-state");
+  const modelsEl = document.getElementById("models");
+  const modelForm = document.getElementById("model-form");
 
   const engine = new PlotEngine(canvas);
   const viewButtons = Array.from(document.querySelectorAll("[data-view]"));
   let placing = null;
+  let projects = [];
+  let allPlots = [];
+  let currentPlots = [];
+  let currentProject = null;
+  let plotRecord = null;
+  let modelRecords = [];
+  let naming = null;
+  let saveTimer = null;
+  let pendingSave = Promise.resolve();
+  let chain = Promise.resolve();
 
   const HINTS = {
     look: "Тяните левой кнопкой, чтобы крутить вид. Правая — сдвиг, колёсико — масштаб. Щелчок — карточка монтажа. MVR или JSON можно перетащить на страницу.",
@@ -75,6 +92,7 @@
     placeBar.hidden = true;
     if (engine.tool === "place") engine.tool = "look";
     renderLibrary();
+    renderModels();
     updateHint();
   }
 
@@ -104,8 +122,10 @@
       color: type.color || "",
       fixtureType: type.fixtureType || "",
       gdtfId: type.gdtfId || "",
+      modelId: type.modelId || "",
     });
     renderLibrary();
+    renderModels();
     updateHint();
   }
 
@@ -141,11 +161,13 @@
       hang: "",
       notes: type.notes || "",
       gdtfId: type.gdtfId || "",
+      modelId: type.modelId || "",
     };
     engine.addObject(obj);
     renderLayers();
     renderList();
     engine.select(obj.id);
+    touchPlot();
   }
 
   function saveTypeFrom(obj) {
@@ -159,6 +181,7 @@
       color: obj.color || "",
       notes: "",
       gdtfId: obj.gdtfId || "",
+      modelId: obj.modelId || "",
     });
     renderLibrary();
   }
@@ -185,6 +208,7 @@
     inspector.innerHTML = [
       "<form class=\"edit\" data-id=\"" + escapeHtml(obj.id) + "\">",
       "<label class=\"stack\">Имя" + textInput("name", obj.name) + "</label>",
+      "<label class=\"stack\">Модель<select data-k=\"modelId\">" + modelOptions(obj) + "</select></label>",
       "<div class=\"xyz\">",
       "<label class=\"stack\">Вид<select data-k=\"kind\">" + kindOptions + "</select></label>",
       "<label class=\"stack\">Слой" + textInput("layer", obj.layer) + "</label>",
@@ -229,6 +253,10 @@
     const obj = engine.selected();
     if (!obj || !input.dataset || !input.dataset.k) return;
     const key = input.dataset.k;
+    if (key === "modelId") {
+      applyModel(obj, input.value);
+      return;
+    }
     if (input.dataset.i != null) {
       const index = Number(input.dataset.i);
       const value = Number(input.value);
@@ -246,6 +274,7 @@
       obj[key] = input.value;
     }
     engine.refresh(obj.id);
+    touchPlot();
     if (key === "name" || key === "universe" || key === "address" || key === "hang" || key === "layer" || key === "kind" || key === "fixtureType") {
       if (key === "layer") renderLayers();
       renderList();
@@ -294,7 +323,7 @@
     libraryEl.innerHTML = FixtureLibrary.items().map(function (type) {
       const on = placing && placing.id === type.id ? " is-on" : "";
       return "<div class=\"lib-row\"><button type=\"button\" class=\"lib-item" + on + "\" data-type=\"" + escapeHtml(type.id) + "\">" +
-        "<span>" + escapeHtml(type.name) + "</span><span class=\"meta\">" + escapeHtml(type.gdtfId ? (type.mode || "GDTF") : PlotFormat.KINDS[type.kind]) + "</span></button>" +
+        "<span>" + escapeHtml(type.name) + "</span><span class=\"meta\">" + escapeHtml(type.modelId ? "3D" : type.gdtfId ? (type.mode || "GDTF") : PlotFormat.KINDS[type.kind]) + "</span></button>" +
         "<button type=\"button\" class=\"lib-x\" data-remove=\"" + escapeHtml(type.id) + "\" aria-label=\"Убрать " + escapeHtml(type.name) + " из базы\">×</button></div>";
     }).join("");
   }
@@ -329,15 +358,349 @@
     });
   }
 
-  function usePlot(data) {
+  function usePlot(data, options) {
     const plot = PlotFormat.parsePlot(data);
-    attachProfiles(plot);
-    cancelPlace();
-    engine.load(plot);
-    moveButton.classList.remove("is-on");
-    renderPlot();
+    function show() {
+      attachProfiles(plot);
+      cancelPlace();
+      engine.load(plot);
+      moveButton.classList.remove("is-on");
+      renderPlot();
+      showError("");
+      updateHint();
+      if (options && options.keep) return keepImported();
+      return Promise.resolve();
+    }
+    if (options && options.keep) return flushPlot().then(show);
+    return show();
+  }
+
+  function enqueue(task) {
+    const run = chain.then(task, task);
+    chain = run.then(function () {}, function () {});
+    return run;
+  }
+
+  function fail(err) {
+    showError(err && err.message ? err.message : "Не удалось записать в базу.");
+  }
+
+  function markSaving() { saveState.textContent = "запись…"; }
+  function markSaved() { saveState.textContent = "сохранено"; }
+
+  function modelOptions(obj) {
+    const current = obj.modelId || "";
+    const groups = [
+      ["fixture", "Световые приборы"],
+      ["stage", "Сценические элементы"],
+      ["structure", "Конструктивные элементы"],
+    ];
+    const html = ["<option value=\"\">Габарит</option>"];
+    groups.forEach(function (group) {
+      const items = modelRecords.filter(function (model) { return model.category === group[0]; });
+      if (!items.length) return;
+      html.push("<optgroup label=\"" + escapeHtml(group[1]) + "\">");
+      items.forEach(function (model) {
+        html.push("<option value=\"" + escapeHtml(model.id) + "\"" + (model.id === current ? " selected" : "") + ">" + escapeHtml(model.name) + "</option>");
+      });
+      html.push("</optgroup>");
+    });
+    return html.join("");
+  }
+
+  function modelType(model) {
+    const cat = ModelMesh.CATEGORIES[model.category] || ModelMesh.CATEGORIES.fixture;
+    return {
+      id: model.id,
+      name: model.name,
+      kind: cat.kind,
+      size: model.size.slice(),
+      layer: cat.layer,
+      fixtureType: cat.kind === "fixture" ? model.name : "",
+      mode: "",
+      color: "",
+      notes: "",
+      gdtfId: "",
+      modelId: model.id,
+    };
+  }
+
+  function applyModel(obj, id) {
+    obj.modelId = id;
+    const model = modelRecords.find(function (item) { return item.id === id; });
+    if (model) {
+      obj.size[0] = model.size[0];
+      obj.size[1] = model.size[1];
+      obj.size[2] = model.size[2];
+    }
+    engine.refresh(obj.id);
+    renderInspector(obj);
+    renderList();
+    touchPlot();
+  }
+
+  function touchPlot() {
+    if (!plotRecord || !engine.plot) return;
+    markSaving();
+    clearTimeout(saveTimer);
+    saveTimer = setTimeout(function () {
+      flushPlot().catch(fail);
+    }, 400);
+  }
+
+  function flushPlot() {
+    clearTimeout(saveTimer);
+    saveTimer = null;
+    if (!plotRecord || !engine.plot) return Promise.resolve();
+    plotRecord.venue = {
+      name: engine.plot.venue.name,
+      note: engine.plot.venue.note || "",
+    };
+    plotRecord.objects = engine.plot.objects;
+    plotRecord.updatedAt = Date.now();
+    markSaving();
+    const save = PlotDb.savePlot(plotRecord).then(function () { markSaved(); });
+    pendingSave = save.then(function () {}, function () {});
+    return save;
+  }
+
+  function plotsOf(projectId) {
+    return allPlots.filter(function (plot) { return plot.projectId === projectId; });
+  }
+
+  function fillSelect(select, items, currentId) {
+    select.innerHTML = items.map(function (item) {
+      return "<option value=\"" + escapeHtml(item.id) + "\">" + escapeHtml(item.name) + "</option>";
+    }).join("");
+    if (currentId) select.value = currentId;
+  }
+
+  function renderSelectors() {
+    fillSelect(projectSelect, projects, currentProject && currentProject.id);
+    fillSelect(plotSelect, currentPlots, plotRecord && plotRecord.id);
+  }
+
+  function remember() {
+    if (!currentProject || !plotRecord) return;
+    PlotDb.writeSession(currentProject.id, plotRecord.id);
+  }
+
+  function openRecord(record) {
+    plotRecord = record;
+    usePlot({ venue: record.venue, objects: record.objects });
+    remember();
+    renderSelectors();
+    markSaved();
+  }
+
+  function keepImported() {
+    if (!currentProject || !engine.plot) return Promise.resolve();
+    const now = Date.now();
+    const record = {
+      id: "plt-" + now.toString(36) + "-" + Math.random().toString(36).slice(2, 8),
+      projectId: currentProject.id,
+      name: engine.plot.venue.name,
+      note: engine.plot.venue.note || "",
+      venue: { name: engine.plot.venue.name, note: engine.plot.venue.note || "" },
+      objects: engine.plot.objects,
+      createdAt: now,
+      updatedAt: now,
+    };
+    plotRecord = record;
+    allPlots.push(record);
+    currentPlots = plotsOf(currentProject.id);
+    remember();
+    renderSelectors();
+    markSaving();
+    return PlotDb.savePlot(record).then(function () { markSaved(); });
+  }
+
+  function addPlot(name) {
+    return flushPlot().then(function () {
+      const record = PlotDb.blankPlot(currentProject.id, name);
+      return PlotDb.savePlot(record).then(function () {
+        allPlots.push(record);
+        currentPlots = plotsOf(currentProject.id);
+        openRecord(record);
+      });
+    });
+  }
+
+  function addProject(name) {
+    return flushPlot().then(function () {
+      const project = { name: name, note: "" };
+      return PlotDb.saveProject(project).then(function () {
+        const record = PlotDb.blankPlot(project.id, name);
+        return PlotDb.savePlot(record).then(function () { return record; });
+      }).then(function (record) {
+        projects.push(project);
+        allPlots.push(record);
+        currentProject = project;
+        currentPlots = plotsOf(project.id);
+        openRecord(record);
+      });
+    });
+  }
+
+  function switchProject(project) {
+    currentProject = project;
+    currentPlots = plotsOf(project.id);
+    if (!currentPlots.length) return addPlot("Новая схема");
+    openRecord(currentPlots[0]);
+    return Promise.resolve();
+  }
+
+  function renameProject(name) {
+    currentProject.name = name;
+    return PlotDb.saveProject(currentProject).then(function () {
+      renderSelectors();
+      markSaved();
+    });
+  }
+
+  function renamePlot(name) {
+    const previous = plotRecord.name;
+    plotRecord.name = name;
+    if (engine.plot && engine.plot.venue.name === previous) {
+      engine.plot.venue.name = name;
+      venueName.textContent = name;
+      document.title = name + " — схема";
+    }
+    return flushPlot().then(renderSelectors);
+  }
+
+  function deleteProject() {
+    if (projects.length < 2) {
+      showError("Нужен хотя бы один проект.");
+      return Promise.resolve();
+    }
+    const project = currentProject;
+    if (!window.confirm("Удалить проект «" + project.name + "» и все его схемы?")) return Promise.resolve();
     showError("");
-    updateHint();
+    clearTimeout(saveTimer);
+    saveTimer = null;
+    return pendingSave.then(function () {
+      plotRecord = null;
+      return PlotDb.removeProject(project.id);
+    }).then(function () {
+      projects = projects.filter(function (item) { return item.id !== project.id; });
+      allPlots = allPlots.filter(function (item) { return item.projectId !== project.id; });
+      return switchProject(projects[0]);
+    });
+  }
+
+  function deletePlot() {
+    if (!plotRecord) return Promise.resolve();
+    const plot = plotRecord;
+    const last = currentPlots.length < 2;
+    const message = last
+      ? "Удалить схему «" + plot.name + "»? Это последняя схема проекта — откроется пустая."
+      : "Удалить схему «" + plot.name + "»?";
+    if (!window.confirm(message)) return Promise.resolve();
+    showError("");
+    clearTimeout(saveTimer);
+    saveTimer = null;
+    return pendingSave.then(function () {
+      plotRecord = null;
+      return PlotDb.removePlot(plot.id);
+    }).then(function () {
+      allPlots = allPlots.filter(function (item) { return item.id !== plot.id; });
+      currentPlots = plotsOf(currentProject.id);
+      if (!currentPlots.length) return addPlot("Новая схема");
+      openRecord(currentPlots[0]);
+      return Promise.resolve();
+    });
+  }
+
+  function askName(mode) {
+    naming = mode;
+    const renaming = mode.indexOf("rename") === 0;
+    nameSubmit.textContent = renaming ? "Сохранить" : "Создать";
+    nameForm.elements.title.value = renaming
+      ? (mode === "rename-project" ? currentProject.name : plotRecord.name)
+      : "";
+    nameForm.elements.title.placeholder = mode.indexOf("project") !== -1 ? "Название проекта" : "Название схемы";
+    nameForm.hidden = false;
+    nameForm.elements.title.focus();
+    nameForm.elements.title.select();
+  }
+
+  function closeNameForm() {
+    naming = null;
+    nameForm.hidden = true;
+    nameForm.reset();
+  }
+
+  function renderModels() {
+    modelsEl.innerHTML = modelRecords.map(function (model) {
+      const cat = ModelMesh.CATEGORIES[model.category];
+      const on = placing && placing.modelId === model.id ? " is-on" : "";
+      const size = model.size.map(function (n) { return fmt(n); }).join("×");
+      return "<div class=\"lib-row\"><button type=\"button\" class=\"lib-item" + on + "\" data-model=\"" + escapeHtml(model.id) + "\" title=\"" + escapeHtml(cat ? cat.label : "") + "\">" +
+        "<span>" + escapeHtml(model.name) + "</span><span class=\"meta\">" + escapeHtml((cat && cat.short) || size) + "</span></button>" +
+        "<button type=\"button\" class=\"lib-x\" data-model-remove=\"" + escapeHtml(model.id) + "\" aria-label=\"Убрать " + escapeHtml(model.name) + " из библиотеки\">×</button></div>";
+    }).join("");
+  }
+
+  function openModelForm(file) {
+    modelForm.hidden = false;
+    if (file) {
+      try {
+        const list = new DataTransfer();
+        list.items.add(file);
+        modelForm.elements.file.files = list.files;
+      } catch (err) { /* the file input stays empty and the form asks again */ }
+      if (!modelForm.elements.name.value) {
+        modelForm.elements.name.value = file.name.replace(/\.glb$/i, "").replace(/[_-]+/g, " ");
+      }
+    }
+    modelForm.elements.name.focus();
+  }
+
+  function forgetModel(id) {
+    if (placing && placing.modelId === id) cancelPlace();
+    allPlots.forEach(function (plot) {
+      (plot.objects || []).forEach(function (obj) {
+        if (obj && obj.modelId === id) obj.modelId = "";
+      });
+    });
+    if (engine.plot) {
+      engine.plot.objects.forEach(function (obj) {
+        if (obj.modelId === id) obj.modelId = "";
+      });
+    }
+    FixtureLibrary.forgetModel(id);
+    engine.dropModel(id);
+    modelRecords = modelRecords.filter(function (model) { return model.id !== id; });
+    renderModels();
+    renderLibrary();
+    renderInspector(engine.selected());
+    const except = plotRecord && plotRecord.id;
+    return flushPlot().then(function () {
+      return PlotDb.clearModel(id, except);
+    }).then(function () {
+      return PlotDb.removeModel(id);
+    });
+  }
+
+  function boot() {
+    venueNote.textContent = "Открываю базу…";
+    Promise.all([GdtfStore.all(), PlotDb.bootstrap(demoPlot)]).then(function (parts) {
+      parts[0].forEach(function (profile) { engine.uploadProfile(profile); });
+      const data = parts[1];
+      projects = data.projects;
+      allPlots = data.plots;
+      modelRecords = data.models;
+      data.meshes.forEach(function (mesh) { engine.uploadModel(mesh.id, mesh); });
+      currentProject = projects.find(function (project) { return project.id === data.session.projectId; }) || projects[0];
+      currentPlots = plotsOf(currentProject.id);
+      const plot = currentPlots.find(function (item) { return item.id === data.session.plotId; }) || currentPlots[0];
+      renderModels();
+      openRecord(plot);
+    }).catch(function (err) {
+      fail(err);
+      try { usePlot(demoPlot); } catch (plotErr) { showError(plotErr.message); }
+    });
   }
 
   engine.onSelect = renderInspector;
@@ -346,6 +709,7 @@
       const input = inspector.querySelector("[data-k=\"position\"][data-i=\"" + index + "\"]");
       if (input && document.activeElement !== input) input.value = fmt(obj.position[index]);
     });
+    touchPlot();
   };
   engine.onPlace = placeAt;
   engine.onViewChange = function (name) {
@@ -396,7 +760,8 @@
 
   function readIncoming(file) {
     const name = file.name.toLowerCase();
-    if (name.endsWith(".gdtf")) readGdtf(file);
+    if (name.endsWith(".glb")) openModelForm(file);
+    else if (name.endsWith(".gdtf")) readGdtf(file);
     else if (name.endsWith(".mvr") || name.endsWith(".zip")) readMvr(file);
     else if (name.endsWith(".json")) readJson(file);
     else {
@@ -415,7 +780,9 @@
     reader.onerror = function () { showError("Не удалось прочитать файл."); };
     reader.onload = function () {
       try {
-        usePlot(JSON.parse(String(reader.result)));
+        usePlot(JSON.parse(String(reader.result)), { keep: true }).catch(function (err) {
+          showError(err && err.message ? err.message : "Не удалось открыть JSON.");
+        });
       } catch (err) {
         showError(err instanceof SyntaxError ? "Файл не похож на JSON." : err.message);
       }
@@ -430,7 +797,7 @@
     reader.onerror = function () { showError("Не удалось прочитать файл."); };
     reader.onload = function () {
       MvrImport.parse(reader.result, file.name).then(function (plot) {
-        usePlot(plot);
+        return usePlot(plot, { keep: true });
       }).catch(function (err) {
         showError(err && err.message ? err.message : "Не удалось прочитать MVR.");
       });
@@ -501,6 +868,7 @@
       engine.removeObject(obj.id);
       renderLayers();
       renderList();
+      touchPlot();
     }
   });
 
@@ -602,17 +970,126 @@
     e.preventDefault();
     obj.position[axis] = snap(Math.max(axis === 1 ? 0 : -Infinity, obj.position[axis] + sign * step));
     engine.refresh(obj.id);
-    engine.onTransform(obj);
+    [0, 1, 2].forEach(function (index) {
+      const input = inspector.querySelector("[data-k=\"position\"][data-i=\"" + index + "\"]");
+      if (input && document.activeElement !== input) input.value = fmt(obj.position[index]);
+    });
+    touchPlot();
   });
+
+  projectSelect.addEventListener("change", function () {
+    const next = projects.find(function (project) { return project.id === projectSelect.value; });
+    if (!next || (currentProject && next.id === currentProject.id)) return;
+    enqueue(function () {
+      return flushPlot().then(function () { return switchProject(next); });
+    }).catch(function (err) {
+      fail(err);
+      if (currentProject) projectSelect.value = currentProject.id;
+    });
+  });
+  plotSelect.addEventListener("change", function () {
+    const next = currentPlots.find(function (plot) { return plot.id === plotSelect.value; });
+    if (!next || (plotRecord && next.id === plotRecord.id)) return;
+    enqueue(function () {
+      return flushPlot().then(function () { openRecord(next); });
+    }).catch(function (err) {
+      fail(err);
+      if (plotRecord) plotSelect.value = plotRecord.id;
+    });
+  });
+  document.getElementById("project-new").addEventListener("click", function () { askName("project"); });
+  document.getElementById("plot-new").addEventListener("click", function () { askName("plot"); });
+  document.getElementById("project-rename").addEventListener("click", function () {
+    if (currentProject) askName("rename-project");
+  });
+  document.getElementById("plot-rename").addEventListener("click", function () {
+    if (plotRecord) askName("rename-plot");
+  });
+  document.getElementById("project-delete").addEventListener("click", function () {
+    enqueue(deleteProject).catch(fail);
+  });
+  document.getElementById("plot-delete").addEventListener("click", function () {
+    enqueue(deletePlot).catch(fail);
+  });
+  document.getElementById("name-cancel").addEventListener("click", closeNameForm);
+  nameForm.addEventListener("submit", function (e) {
+    e.preventDefault();
+    const title = String(nameForm.elements.title.value || "").trim();
+    const mode = naming;
+    if (!title || !mode) return;
+    closeNameForm();
+    const task = mode === "project" ? function () { return addProject(title); }
+      : mode === "plot" ? function () { return addPlot(title); }
+      : mode === "rename-project" ? function () { return renameProject(title); }
+      : function () { return renamePlot(title); };
+    enqueue(task).catch(fail);
+  });
+
+  document.getElementById("model-add").addEventListener("click", function () {
+    modelForm.hidden = !modelForm.hidden;
+    if (!modelForm.hidden) modelForm.elements.name.focus();
+  });
+  modelForm.addEventListener("submit", function (e) {
+    e.preventDefault();
+    const name = String(modelForm.elements.name.value || "").trim();
+    const category = String(modelForm.elements.category.value || "fixture");
+    const file = modelForm.elements.file.files && modelForm.elements.file.files[0];
+    if (!name) {
+      showError("Нужно название модели.");
+      return;
+    }
+    if (!ModelMesh.CATEGORIES[category]) {
+      showError("Неизвестная категория модели.");
+      return;
+    }
+    if (!file) {
+      showError("Нужен файл GLB.");
+      return;
+    }
+    if (file.size > 30 * 1024 * 1024) {
+      showError("Файл больше 30 МБ.");
+      return;
+    }
+    showError("");
+    file.arrayBuffer().then(function (buffer) {
+      const mesh = ModelMesh.fromGlb(buffer);
+      return PlotDb.addModel({
+        name: name,
+        category: category,
+        size: mesh.size,
+        fileName: file.name,
+      }, mesh).then(function (record) {
+        engine.uploadModel(record.id, mesh);
+        modelRecords.push(record);
+        modelForm.reset();
+        modelForm.hidden = true;
+        renderModels();
+        showError("");
+        beginPlace(modelType(record));
+      });
+    }).catch(fail);
+  });
+  modelsEl.addEventListener("click", function (e) {
+    const remove = e.target.closest("[data-model-remove]");
+    if (remove) {
+      const model = modelRecords.find(function (item) { return item.id === remove.dataset.modelRemove; });
+      if (!model) return;
+      if (!window.confirm("Убрать «" + model.name + "» из библиотеки моделей?")) return;
+      enqueue(function () { return forgetModel(model.id); }).catch(fail);
+      return;
+    }
+    const button = e.target.closest("[data-model]");
+    if (!button) return;
+    const model = modelRecords.find(function (item) { return item.id === button.dataset.model; });
+    if (model) beginPlace(modelType(model));
+  });
+
+  document.addEventListener("visibilitychange", function () {
+    if (document.visibilityState === "hidden") flushPlot().catch(fail);
+  });
+  window.addEventListener("beforeunload", function () { flushPlot(); });
 
   renderLibrary();
   updateHint();
-  GdtfStore.all().then(function (profiles) {
-    profiles.forEach(function (profile) { engine.uploadProfile(profile); });
-  });
-  try {
-    usePlot(demoPlot);
-  } catch (err) {
-    showError(err.message);
-  }
+  boot();
 })();
