@@ -84,7 +84,8 @@
           <h2>Модели</h2>
           <button type="button" id="model-add">Добавить</button>
         </div>
-        <p class="empty">GLB в метрах: прибор, элемент сцены или конструкция. Выберите и щёлкните по полу.</p>
+        <p class="empty">Фермы Prolyte H30V и H40V уже в списке. Свой GLB — кнопка «Добавить» или перетащите файл на страницу.</p>
+        <label class="stack">Поиск модели<input id="model-filter" type="search" placeholder="H30V, угол, BOX" autocomplete="off"></label>
         <div id="models"></div>
         <form id="model-form" hidden>
           <label class="stack">Название<input name="name" required autocomplete="off"></label>
@@ -105,7 +106,9 @@
           <button type="button" id="lib-add">Свой тип</button>
         </div>
         <label class="btn gdtf-wide" for="gdtf-file">Импорт GDTF</label>
-        <p class="empty">Выберите тип и щёлкните по полу. GDTF добавляется кнопкой сверху или здесь.</p>
+        <p class="empty">Выберите тип и щёлкните по полу. Свой GDTF — кнопкой сверху.</p>
+        <label class="stack">Поиск в базе<input id="library-filter" type="search" placeholder="название или мод" autocomplete="off"></label>
+        <p class="empty" id="catalog-state" hidden></p>
         <div id="library"></div>
         <form id="lib-form" hidden>
           <label class="stack">Название<input name="name" required autocomplete="off"></label>
@@ -147,6 +150,7 @@
   <script src="js/gdtf.js"></script>
   <script src="js/mvr.js"></script>
   <script src="js/library.js"></script>
+  <script src="js/catalog.js"></script>
   <script src="js/demo.js"></script>
   <script src="js/engine.js"></script>
   <script src="js/main.js"></script>

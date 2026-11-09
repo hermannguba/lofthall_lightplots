@@ -150,11 +150,12 @@ var PlotDb = (function () {
   function addModel(meta, mesh) {
     const now = Date.now();
     const record = {
-      id: uid("mdl"),
+      id: meta.id ? String(meta.id) : uid("mdl"),
       name: String(meta.name || "Модель").trim() || "Модель",
       category: meta.category,
       size: [Number(meta.size[0]), Number(meta.size[1]), Number(meta.size[2])],
       fileName: String(meta.fileName || ""),
+      source: String(meta.source || ""),
       createdAt: now,
     };
     return put("models", record).then(function () {

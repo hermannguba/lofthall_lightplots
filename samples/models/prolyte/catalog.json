@@ -1,0 +1,710 @@
+[
+  {
+    "id": "prolyte-box-30v-0",
+    "name": "Prolyte BOX-30V-0",
+    "file": "samples/models/prolyte/box-30v-0.glb",
+    "category": "structure",
+    "size": [
+      0.289,
+      0.289,
+      0.289
+    ],
+    "triangles": 5298
+  },
+  {
+    "id": "prolyte-box-30v-a-001",
+    "name": "Prolyte BOX-30V-A-001",
+    "file": "samples/models/prolyte/box-30v-a-001.glb",
+    "category": "structure",
+    "size": [
+      0.211,
+      0.289,
+      0.289
+    ],
+    "triangles": 2214
+  },
+  {
+    "id": "prolyte-box-30v-att",
+    "name": "Prolyte BOX-30V-ATT",
+    "file": "samples/models/prolyte/box-30v-att.glb",
+    "category": "structure",
+    "size": [
+      0.075,
+      0.288,
+      0.288
+    ],
+    "triangles": 1152
+  },
+  {
+    "id": "prolyte-box-30v-att-001",
+    "name": "Prolyte BOX-30V-ATT-001",
+    "file": "samples/models/prolyte/box-30v-att-001.glb",
+    "category": "structure",
+    "size": [
+      0.106,
+      0.287,
+      0.287
+    ],
+    "triangles": 1152
+  },
+  {
+    "id": "prolyte-box-40v-0",
+    "name": "Prolyte BOX-40V-0",
+    "file": "samples/models/prolyte/box-40v-0.glb",
+    "category": "structure",
+    "size": [
+      0.389,
+      0.389,
+      0.389
+    ],
+    "triangles": 5298
+  },
+  {
+    "id": "prolyte-box-40v-a-001",
+    "name": "Prolyte BOX-40V-A-001",
+    "file": "samples/models/prolyte/box-40v-a-001.glb",
+    "category": "structure",
+    "size": [
+      0.211,
+      0.389,
+      0.389
+    ],
+    "triangles": 2770
+  },
+  {
+    "id": "prolyte-box-40v-a-002",
+    "name": "Prolyte BOX-40V-A-002",
+    "file": "samples/models/prolyte/box-40v-a-002.glb",
+    "category": "structure",
+    "size": [
+      0.305,
+      0.389,
+      0.389
+    ],
+    "triangles": 2224
+  },
+  {
+    "id": "prolyte-box-40v-att",
+    "name": "Prolyte BOX-40V-ATT",
+    "file": "samples/models/prolyte/box-40v-att.glb",
+    "category": "structure",
+    "size": [
+      0.075,
+      0.388,
+      0.388
+    ],
+    "triangles": 1152
+  },
+  {
+    "id": "prolyte-h30v-c001",
+    "name": "Prolyte H30V-C001 · угол 90°",
+    "file": "samples/models/prolyte/h30v-c001.glb",
+    "category": "structure",
+    "size": [
+      0.707,
+      1.0,
+      0.287
+    ],
+    "triangles": 7396
+  },
+  {
+    "id": "prolyte-h30v-c002",
+    "name": "Prolyte H30V-C002 · 3 стороны 90°",
+    "file": "samples/models/prolyte/h30v-c002.glb",
+    "category": "structure",
+    "size": [
+      0.866,
+      1.0,
+      0.287
+    ],
+    "triangles": 6974
+  },
+  {
+    "id": "prolyte-h30v-c003",
+    "name": "Prolyte H30V-C003 · 4 стороны 90°",
+    "file": "samples/models/prolyte/h30v-c003.glb",
+    "category": "structure",
+    "size": [
+      0.5,
+      0.5,
+      0.287
+    ],
+    "triangles": 5348
+  },
+  {
+    "id": "prolyte-h30v-c004",
+    "name": "Prolyte H30V-C004 · крест 90°",
+    "file": "samples/models/prolyte/h30v-c004.glb",
+    "category": "structure",
+    "size": [
+      0.577,
+      0.75,
+      0.287
+    ],
+    "triangles": 5462
+  },
+  {
+    "id": "prolyte-h30v-c005",
+    "name": "Prolyte H30V-C005 · T 90°",
+    "file": "samples/models/prolyte/h30v-c005.glb",
+    "category": "structure",
+    "size": [
+      0.557,
+      0.854,
+      0.287
+    ],
+    "triangles": 6020
+  },
+  {
+    "id": "prolyte-h30v-c012",
+    "name": "Prolyte H30V-C012 · угол 45°",
+    "file": "samples/models/prolyte/h30v-c012.glb",
+    "category": "structure",
+    "size": [
+      0.5,
+      0.5,
+      0.5
+    ],
+    "triangles": 7776
+  },
+  {
+    "id": "prolyte-h30v-c016",
+    "name": "Prolyte H30V-C016 · 3 стороны 45°",
+    "file": "samples/models/prolyte/h30v-c016.glb",
+    "category": "structure",
+    "size": [
+      0.713,
+      0.713,
+      0.287
+    ],
+    "triangles": 10676
+  },
+  {
+    "id": "prolyte-h30v-c017",
+    "name": "Prolyte H30V-C017 · 4 стороны 45°",
+    "file": "samples/models/prolyte/h30v-c017.glb",
+    "category": "structure",
+    "size": [
+      0.5,
+      0.713,
+      0.287
+    ],
+    "triangles": 8196
+  },
+  {
+    "id": "prolyte-h30v-c020",
+    "name": "Prolyte H30V-C020 · угол 135°",
+    "file": "samples/models/prolyte/h30v-c020.glb",
+    "category": "structure",
+    "size": [
+      0.5,
+      0.713,
+      0.5
+    ],
+    "triangles": 10598
+  },
+  {
+    "id": "prolyte-h30v-c022",
+    "name": "Prolyte H30V-C022 · 3 стороны 135°",
+    "file": "samples/models/prolyte/h30v-c022.glb",
+    "category": "structure",
+    "size": [
+      0.713,
+      0.713,
+      0.713
+    ],
+    "triangles": 15426
+  },
+  {
+    "id": "prolyte-h30v-c024",
+    "name": "Prolyte H30V-C024 · 4 стороны 135°",
+    "file": "samples/models/prolyte/h30v-c024.glb",
+    "category": "structure",
+    "size": [
+      0.713,
+      0.713,
+      0.5
+    ],
+    "triangles": 13036
+  },
+  {
+    "id": "prolyte-h30v-l025",
+    "name": "Prolyte H30V-L025",
+    "file": "samples/models/prolyte/h30v-l025.glb",
+    "category": "structure",
+    "size": [
+      0.25,
+      0.287,
+      0.287
+    ],
+    "triangles": 3928
+  },
+  {
+    "id": "prolyte-h30v-l029",
+    "name": "Prolyte H30V-L029",
+    "file": "samples/models/prolyte/h30v-l029.glb",
+    "category": "structure",
+    "size": [
+      0.29,
+      0.287,
+      0.287
+    ],
+    "triangles": 3928
+  },
+  {
+    "id": "prolyte-h30v-l050",
+    "name": "Prolyte H30V-L050",
+    "file": "samples/models/prolyte/h30v-l050.glb",
+    "category": "structure",
+    "size": [
+      0.5,
+      0.287,
+      0.287
+    ],
+    "triangles": 4264
+  },
+  {
+    "id": "prolyte-h30v-l071",
+    "name": "Prolyte H30V-L071",
+    "file": "samples/models/prolyte/h30v-l071.glb",
+    "category": "structure",
+    "size": [
+      0.71,
+      0.287,
+      0.287
+    ],
+    "triangles": 4600
+  },
+  {
+    "id": "prolyte-h30v-l075",
+    "name": "Prolyte H30V-L075",
+    "file": "samples/models/prolyte/h30v-l075.glb",
+    "category": "structure",
+    "size": [
+      0.75,
+      0.287,
+      0.287
+    ],
+    "triangles": 4936
+  },
+  {
+    "id": "prolyte-h30v-l100",
+    "name": "Prolyte H30V-L100",
+    "file": "samples/models/prolyte/h30v-l100.glb",
+    "category": "structure",
+    "size": [
+      1.0,
+      0.287,
+      0.287
+    ],
+    "triangles": 5064
+  },
+  {
+    "id": "prolyte-h30v-l150",
+    "name": "Prolyte H30V-L150",
+    "file": "samples/models/prolyte/h30v-l150.glb",
+    "category": "structure",
+    "size": [
+      1.5,
+      0.287,
+      0.287
+    ],
+    "triangles": 5800
+  },
+  {
+    "id": "prolyte-h30v-l200",
+    "name": "Prolyte H30V-L200",
+    "file": "samples/models/prolyte/h30v-l200.glb",
+    "category": "structure",
+    "size": [
+      2.0,
+      0.287,
+      0.287
+    ],
+    "triangles": 6536
+  },
+  {
+    "id": "prolyte-h30v-l250",
+    "name": "Prolyte H30V-L250",
+    "file": "samples/models/prolyte/h30v-l250.glb",
+    "category": "structure",
+    "size": [
+      2.5,
+      0.287,
+      0.287
+    ],
+    "triangles": 7272
+  },
+  {
+    "id": "prolyte-h30v-l300",
+    "name": "Prolyte H30V-L300",
+    "file": "samples/models/prolyte/h30v-l300.glb",
+    "category": "structure",
+    "size": [
+      3.0,
+      0.287,
+      0.287
+    ],
+    "triangles": 8092
+  },
+  {
+    "id": "prolyte-h30v-l350",
+    "name": "Prolyte H30V-L350",
+    "file": "samples/models/prolyte/h30v-l350.glb",
+    "category": "structure",
+    "size": [
+      3.5,
+      0.287,
+      0.287
+    ],
+    "triangles": 8828
+  },
+  {
+    "id": "prolyte-h30v-l400",
+    "name": "Prolyte H30V-L400",
+    "file": "samples/models/prolyte/h30v-l400.glb",
+    "category": "structure",
+    "size": [
+      4.0,
+      0.287,
+      0.287
+    ],
+    "triangles": 9564
+  },
+  {
+    "id": "prolyte-h30v-l450",
+    "name": "Prolyte H30V-L450",
+    "file": "samples/models/prolyte/h30v-l450.glb",
+    "category": "structure",
+    "size": [
+      4.5,
+      0.287,
+      0.287
+    ],
+    "triangles": 10384
+  },
+  {
+    "id": "prolyte-h30v-l500",
+    "name": "Prolyte H30V-L500",
+    "file": "samples/models/prolyte/h30v-l500.glb",
+    "category": "structure",
+    "size": [
+      5.0,
+      0.287,
+      0.287
+    ],
+    "triangles": 11120
+  },
+  {
+    "id": "prolyte-h40v-c001",
+    "name": "Prolyte H40V-C001 · угол 90°",
+    "file": "samples/models/prolyte/h40v-c001.glb",
+    "category": "structure",
+    "size": [
+      0.848,
+      1.2,
+      0.387
+    ],
+    "triangles": 6258
+  },
+  {
+    "id": "prolyte-h40v-c002",
+    "name": "Prolyte H40V-C002 · 3 стороны 90°",
+    "file": "samples/models/prolyte/h40v-c002.glb",
+    "category": "structure",
+    "size": [
+      1.039,
+      1.2,
+      0.387
+    ],
+    "triangles": 6366
+  },
+  {
+    "id": "prolyte-h40v-c003",
+    "name": "Prolyte H40V-C003 · 4 стороны 90°",
+    "file": "samples/models/prolyte/h40v-c003.glb",
+    "category": "structure",
+    "size": [
+      0.848,
+      0.387,
+      0.698
+    ],
+    "triangles": 5997
+  },
+  {
+    "id": "prolyte-h40v-c004",
+    "name": "Prolyte H40V-C004 · крест 90°",
+    "file": "samples/models/prolyte/h40v-c004.glb",
+    "category": "structure",
+    "size": [
+      0.713,
+      0.9,
+      0.387
+    ],
+    "triangles": 5370
+  },
+  {
+    "id": "prolyte-h40v-c005",
+    "name": "Prolyte H40V-C005 · T 90°",
+    "file": "samples/models/prolyte/h40v-c005.glb",
+    "category": "structure",
+    "size": [
+      0.698,
+      1.024,
+      0.387
+    ],
+    "triangles": 5320
+  },
+  {
+    "id": "prolyte-h40v-c012",
+    "name": "Prolyte H40V-C012 · угол 45°",
+    "file": "samples/models/prolyte/h40v-c012.glb",
+    "category": "structure",
+    "size": [
+      0.848,
+      0.6,
+      0.698
+    ],
+    "triangles": 8711
+  },
+  {
+    "id": "prolyte-h40v-c016",
+    "name": "Prolyte H40V-C016 · 3 стороны 45°",
+    "file": "samples/models/prolyte/h40v-c016.glb",
+    "category": "structure",
+    "size": [
+      0.813,
+      0.813,
+      0.387
+    ],
+    "triangles": 12275
+  },
+  {
+    "id": "prolyte-h40v-c017",
+    "name": "Prolyte H40V-C017 · 4 стороны 45°",
+    "file": "samples/models/prolyte/h40v-c017.glb",
+    "category": "structure",
+    "size": [
+      0.6,
+      0.813,
+      0.387
+    ],
+    "triangles": 17859
+  },
+  {
+    "id": "prolyte-h40v-c020",
+    "name": "Prolyte H40V-C020 · угол 135°",
+    "file": "samples/models/prolyte/h40v-c020.glb",
+    "category": "structure",
+    "size": [
+      0.6,
+      0.813,
+      0.6
+    ],
+    "triangles": 12439
+  },
+  {
+    "id": "prolyte-h40v-c022",
+    "name": "Prolyte H40V-C022 · 3 стороны 135°",
+    "file": "samples/models/prolyte/h40v-c022.glb",
+    "category": "structure",
+    "size": [
+      0.813,
+      0.813,
+      0.813
+    ],
+    "triangles": 18584
+  },
+  {
+    "id": "prolyte-h40v-c024",
+    "name": "Prolyte H40V-C024 · 4 стороны 135°",
+    "file": "samples/models/prolyte/h40v-c024.glb",
+    "category": "structure",
+    "size": [
+      0.813,
+      0.813,
+      0.6
+    ],
+    "triangles": 15676
+  },
+  {
+    "id": "prolyte-h40v-l025",
+    "name": "Prolyte H40V-L025",
+    "file": "samples/models/prolyte/h40v-l025.glb",
+    "category": "structure",
+    "size": [
+      0.25,
+      0.387,
+      0.387
+    ],
+    "triangles": 4098
+  },
+  {
+    "id": "prolyte-h40v-l029",
+    "name": "Prolyte H40V-L029",
+    "file": "samples/models/prolyte/h40v-l029.glb",
+    "category": "structure",
+    "size": [
+      0.29,
+      0.387,
+      0.387
+    ],
+    "triangles": 4098
+  },
+  {
+    "id": "prolyte-h40v-l050",
+    "name": "Prolyte H40V-L050",
+    "file": "samples/models/prolyte/h40v-l050.glb",
+    "category": "structure",
+    "size": [
+      0.5,
+      0.387,
+      0.387
+    ],
+    "triangles": 4130
+  },
+  {
+    "id": "prolyte-h40v-l075",
+    "name": "Prolyte H40V-L075",
+    "file": "samples/models/prolyte/h40v-l075.glb",
+    "category": "structure",
+    "size": [
+      0.75,
+      0.387,
+      0.387
+    ],
+    "triangles": 4528
+  },
+  {
+    "id": "prolyte-h40v-l081",
+    "name": "Prolyte H40V-L081",
+    "file": "samples/models/prolyte/h40v-l081.glb",
+    "category": "structure",
+    "size": [
+      0.81,
+      0.387,
+      0.387
+    ],
+    "triangles": 4528
+  },
+  {
+    "id": "prolyte-h40v-093",
+    "name": "Prolyte H40V 0.93 м",
+    "file": "samples/models/prolyte/h40v-093.glb",
+    "category": "structure",
+    "size": [
+      0.93,
+      0.387,
+      0.387
+    ],
+    "triangles": 4996
+  },
+  {
+    "id": "prolyte-h40v-l100",
+    "name": "Prolyte H40V-L100",
+    "file": "samples/models/prolyte/h40v-l100.glb",
+    "category": "structure",
+    "size": [
+      1.0,
+      0.387,
+      0.387
+    ],
+    "triangles": 4930
+  },
+  {
+    "id": "prolyte-h40v-l150",
+    "name": "Prolyte H40V-L150",
+    "file": "samples/models/prolyte/h40v-l150.glb",
+    "category": "structure",
+    "size": [
+      1.5,
+      0.387,
+      0.387
+    ],
+    "triangles": 5328
+  },
+  {
+    "id": "prolyte-h40v-l200",
+    "name": "Prolyte H40V-L200",
+    "file": "samples/models/prolyte/h40v-l200.glb",
+    "category": "structure",
+    "size": [
+      2.0,
+      0.387,
+      0.387
+    ],
+    "triangles": 5728
+  },
+  {
+    "id": "prolyte-h40v-l250",
+    "name": "Prolyte H40V-L250",
+    "file": "samples/models/prolyte/h40v-l250.glb",
+    "category": "structure",
+    "size": [
+      2.5,
+      0.387,
+      0.387
+    ],
+    "triangles": 6528
+  },
+  {
+    "id": "prolyte-h40v-l300",
+    "name": "Prolyte H40V-L300",
+    "file": "samples/models/prolyte/h40v-l300.glb",
+    "category": "structure",
+    "size": [
+      3.0,
+      0.387,
+      0.387
+    ],
+    "triangles": 7016
+  },
+  {
+    "id": "prolyte-h40v-l350",
+    "name": "Prolyte H40V-L350",
+    "file": "samples/models/prolyte/h40v-l350.glb",
+    "category": "structure",
+    "size": [
+      3.5,
+      0.387,
+      0.387
+    ],
+    "triangles": 7816
+  },
+  {
+    "id": "prolyte-h40v-l400",
+    "name": "Prolyte H40V-L400",
+    "file": "samples/models/prolyte/h40v-l400.glb",
+    "category": "structure",
+    "size": [
+      4.0,
+      0.387,
+      0.387
+    ],
+    "triangles": 8304
+  },
+  {
+    "id": "prolyte-h40v-l450",
+    "name": "Prolyte H40V-L450",
+    "file": "samples/models/prolyte/h40v-l450.glb",
+    "category": "structure",
+    "size": [
+      4.5,
+      0.387,
+      0.387
+    ],
+    "triangles": 9104
+  },
+  {
+    "id": "prolyte-h40v-l500",
+    "name": "Prolyte H40V-L500",
+    "file": "samples/models/prolyte/h40v-l500.glb",
+    "category": "structure",
+    "size": [
+      5.0,
+      0.387,
+      0.387
+    ],
+    "triangles": 9504
+  }
+]
