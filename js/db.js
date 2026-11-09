@@ -202,16 +202,32 @@ var PlotDb = (function () {
   }
 
   function readSession() {
+    const empty = { projectId: "", plotId: "", byProject: {} };
     try {
       const raw = JSON.parse(localStorage.getItem(SESSION_KEY) || "null");
-      if (raw && typeof raw === "object") return { projectId: String(raw.projectId || ""), plotId: String(raw.plotId || "") };
+      if (!raw || typeof raw !== "object") return empty;
+      const byProject = {};
+      if (raw.byProject && typeof raw.byProject === "object") {
+        Object.keys(raw.byProject).forEach(function (key) {
+          byProject[String(key)] = String(raw.byProject[key] || "");
+        });
+      }
+      return {
+        projectId: String(raw.projectId || ""),
+        plotId: String(raw.plotId || ""),
+        byProject: byProject,
+      };
     } catch (err) { /* a blocked store just opens the first plot */ }
-    return { projectId: "", plotId: "" };
+    return empty;
   }
 
   function writeSession(projectId, plotId) {
     try {
-      localStorage.setItem(SESSION_KEY, JSON.stringify({ projectId: projectId, plotId: plotId }));
+      const session = readSession();
+      session.projectId = String(projectId || "");
+      session.plotId = String(plotId || "");
+      session.byProject[session.projectId] = session.plotId;
+      localStorage.setItem(SESSION_KEY, JSON.stringify(session));
     } catch (err) { /* private mode */ }
   }
 

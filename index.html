@@ -15,7 +15,7 @@
         <h1 id="venue-name">Loft Hall</h1>
       </div>
     </div>
-    <div class="header-actions">
+    <div class="header-actions" id="header-actions" hidden>
       <label class="btn file-btn">Открыть MVR
         <input id="mvr-file" class="file-proxy" type="file" accept=".mvr,.zip,application/zip">
       </label>
@@ -28,12 +28,25 @@
       <button type="button" id="save-file">Скачать JSON</button>
     </div>
   </header>
+  <main id="home">
+    <div class="home-head">
+      <h2>Проекты</h2>
+      <button type="button" id="home-new">Новый проект</button>
+    </div>
+    <p class="home-lead" id="home-lead">Сначала выберите проект. Его схемы откроются внутри.</p>
+    <form id="home-form" hidden>
+      <input name="title" required placeholder="Название проекта" autocomplete="off">
+      <button type="submit">Создать</button>
+      <button type="button" id="home-cancel">Отмена</button>
+    </form>
+    <p class="empty" id="home-empty" hidden>Пока нет проектов.</p>
+    <div id="home-list"></div>
+  </main>
+  <div id="plot-screen" hidden>
   <div class="project-bar">
     <div class="bar-group">
-      <label class="stack">Проект
-        <select id="project-select"></select>
-      </label>
-      <button type="button" id="project-new">Новый</button>
+      <button type="button" id="projects-back">К проектам</button>
+      <p class="project-name" id="project-name"></p>
       <button type="button" id="project-rename">Переименовать</button>
       <button type="button" id="project-delete">Удалить</button>
     </div>
@@ -140,6 +153,7 @@
         <div id="list"></div>
       </section>
     </aside>
+  </div>
   </div>
   <script src="js/math.js"></script>
   <script src="js/plot.js"></script>

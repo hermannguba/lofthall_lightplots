@@ -16,8 +16,15 @@
   const placeLabel = document.getElementById("place-label");
   const placeHeight = document.getElementById("place-height");
   const moveButton = document.getElementById("tool-move");
-  const projectSelect = document.getElementById("project-select");
   const plotSelect = document.getElementById("plot-select");
+  const projectNameEl = document.getElementById("project-name");
+  const homeEl = document.getElementById("home");
+  const homeLead = document.getElementById("home-lead");
+  const homeList = document.getElementById("home-list");
+  const homeEmpty = document.getElementById("home-empty");
+  const homeForm = document.getElementById("home-form");
+  const plotScreen = document.getElementById("plot-screen");
+  const headerActions = document.getElementById("header-actions");
   const nameForm = document.getElementById("name-form");
   const nameSubmit = document.getElementById("name-submit");
   const saveState = document.getElementById("save-state");
@@ -37,6 +44,7 @@
   let plotRecord = null;
   let modelRecords = [];
   let naming = null;
+  let session = { projectId: "", plotId: "", byProject: {} };
   let saveTimer = null;
   let pendingSave = Promise.resolve();
   let chain = Promise.resolve();
@@ -487,22 +495,77 @@
     if (currentId) select.value = currentId;
   }
 
+  function plotCountLabel(count) {
+    const n10 = count % 10;
+    const n100 = count % 100;
+    const word = n10 === 1 && n100 !== 11 ? "схема"
+      : n10 >= 2 && n10 <= 4 && (n100 < 12 || n100 > 14) ? "схемы"
+      : "схем";
+    return count + " " + word;
+  }
+
   function renderSelectors() {
-    fillSelect(projectSelect, projects, currentProject && currentProject.id);
+    if (projectNameEl) projectNameEl.textContent = currentProject ? currentProject.name : "";
     fillSelect(plotSelect, currentPlots, plotRecord && plotRecord.id);
+  }
+
+  function showHome() {
+    homeEl.hidden = false;
+    plotScreen.hidden = true;
+    headerActions.hidden = true;
+    homeLead.textContent = "Сначала выберите проект. Его схемы откроются внутри.";
+    venueNote.textContent = "Сначала выберите проект.";
+    venueName.textContent = "Проекты";
+    document.title = "Проекты — схемы";
+    renderHome();
+  }
+
+  function showPlot() {
+    homeEl.hidden = true;
+    plotScreen.hidden = false;
+    headerActions.hidden = false;
+  }
+
+  function renderHome() {
+    const rows = projects.slice().sort(function (a, b) {
+      return a.name.localeCompare(b.name, "ru");
+    });
+    homeEmpty.hidden = rows.length > 0;
+    homeList.innerHTML = rows.map(function (project) {
+      const count = plotsOf(project.id).length;
+      return "<button type=\"button\" class=\"home-card\" data-project=\"" + escapeHtml(project.id) + "\">" +
+        "<span class=\"home-card-name\">" + escapeHtml(project.name) + "</span>" +
+        "<span class=\"meta\">" + escapeHtml(plotCountLabel(count)) + "</span></button>";
+    }).join("");
   }
 
   function remember() {
     if (!currentProject || !plotRecord) return;
+    if (!session.byProject) session.byProject = {};
+    session.projectId = currentProject.id;
+    session.plotId = plotRecord.id;
+    session.byProject[currentProject.id] = plotRecord.id;
     PlotDb.writeSession(currentProject.id, plotRecord.id);
   }
 
   function openRecord(record) {
+    showPlot();
     plotRecord = record;
     usePlot({ venue: record.venue, objects: record.objects });
     remember();
     renderSelectors();
     markSaved();
+  }
+
+  function openProject(project) {
+    currentProject = project;
+    currentPlots = plotsOf(project.id);
+    homeForm.hidden = true;
+    if (!currentPlots.length) return addPlot("Новая схема");
+    const savedId = session.byProject && session.byProject[project.id];
+    const remembered = currentPlots.find(function (plot) { return plot.id === savedId; });
+    openRecord(remembered || currentPlots[0]);
+    return Promise.resolve();
   }
 
   function keepImported() {
@@ -554,14 +617,6 @@
     });
   }
 
-  function switchProject(project) {
-    currentProject = project;
-    currentPlots = plotsOf(project.id);
-    if (!currentPlots.length) return addPlot("Новая схема");
-    openRecord(currentPlots[0]);
-    return Promise.resolve();
-  }
-
   function renameProject(name) {
     currentProject.name = name;
     return PlotDb.saveProject(currentProject).then(function () {
@@ -597,7 +652,10 @@
     }).then(function () {
       projects = projects.filter(function (item) { return item.id !== project.id; });
       allPlots = allPlots.filter(function (item) { return item.projectId !== project.id; });
-      return switchProject(projects[0]);
+      currentProject = null;
+      currentPlots = [];
+      showHome();
+      return Promise.resolve();
     });
   }
 
@@ -712,11 +770,10 @@
       allPlots = data.plots;
       modelRecords = data.models;
       data.meshes.forEach(function (mesh) { engine.uploadModel(mesh.id, mesh); });
-      currentProject = projects.find(function (project) { return project.id === data.session.projectId; }) || projects[0];
-      currentPlots = plotsOf(currentProject.id);
-      const plot = currentPlots.find(function (item) { return item.id === data.session.plotId; }) || currentPlots[0];
+      session = data.session || { projectId: "", plotId: "", byProject: {} };
+      if (!session.byProject) session.byProject = {};
       renderModels();
-      openRecord(plot);
+      showHome();
       Catalog.install({
         models: function () { return modelRecords; },
         addModel: function (record, mesh) {
@@ -793,6 +850,10 @@
   });
   document.addEventListener("drop", function (e) {
     e.preventDefault();
+    if (plotScreen.hidden) {
+      homeLead.textContent = "Сначала откройте проект, потом перетащите файл на схему.";
+      return;
+    }
     const file = e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0];
     if (file) readIncoming(file);
   });
@@ -1017,16 +1078,6 @@
     touchPlot();
   });
 
-  projectSelect.addEventListener("change", function () {
-    const next = projects.find(function (project) { return project.id === projectSelect.value; });
-    if (!next || (currentProject && next.id === currentProject.id)) return;
-    enqueue(function () {
-      return flushPlot().then(function () { return switchProject(next); });
-    }).catch(function (err) {
-      fail(err);
-      if (currentProject) projectSelect.value = currentProject.id;
-    });
-  });
   plotSelect.addEventListener("change", function () {
     const next = currentPlots.find(function (plot) { return plot.id === plotSelect.value; });
     if (!next || (plotRecord && next.id === plotRecord.id)) return;
@@ -1037,7 +1088,38 @@
       if (plotRecord) plotSelect.value = plotRecord.id;
     });
   });
-  document.getElementById("project-new").addEventListener("click", function () { askName("project"); });
+  document.getElementById("projects-back").addEventListener("click", function () {
+    enqueue(function () {
+      return flushPlot().then(function () {
+        if (placing) cancelPlace();
+        closeNameForm();
+        showHome();
+      });
+    }).catch(fail);
+  });
+  document.getElementById("home-new").addEventListener("click", function () {
+    homeForm.hidden = false;
+    homeForm.elements.title.focus();
+  });
+  document.getElementById("home-cancel").addEventListener("click", function () {
+    homeForm.hidden = true;
+    homeForm.reset();
+  });
+  homeForm.addEventListener("submit", function (e) {
+    e.preventDefault();
+    const title = String(homeForm.elements.title.value || "").trim();
+    if (!title) return;
+    homeForm.hidden = true;
+    homeForm.reset();
+    enqueue(function () { return addProject(title); }).catch(fail);
+  });
+  homeList.addEventListener("click", function (e) {
+    const button = e.target.closest("[data-project]");
+    if (!button) return;
+    const project = projects.find(function (item) { return item.id === button.dataset.project; });
+    if (!project) return;
+    enqueue(function () { return openProject(project); }).catch(fail);
+  });
   document.getElementById("plot-new").addEventListener("click", function () { askName("plot"); });
   document.getElementById("project-rename").addEventListener("click", function () {
     if (currentProject) askName("rename-project");
