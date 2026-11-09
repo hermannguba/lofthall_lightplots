@@ -1,0 +1,2102 @@
+[
+  {
+    "id": "gdtf-acme-acme-par54ip-120638",
+    "file": "library/gdtf/acme/ACME_ACME-PAR54IP_120638.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-acmanima-w-panel-36-ww-72097",
+    "file": "library/gdtf/acme/ACME_ACME_ACMANIMA_W_PANEL_36_WW_72097.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-aeco-10-hr-aeco-10-hr-73522",
+    "file": "library/gdtf/acme/ACME_ACME_AECO_10-HR_AECO_10-HR_73522.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-aeco-15-72101",
+    "file": "library/gdtf/acme/ACME_ACME_AECO_15_72101.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-aeco-20-aeco-20-72201",
+    "file": "library/gdtf/acme/ACME_ACME_AECO_20_AECO_20_72201.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-aeco-20-intl-aeco-20-intl-72202",
+    "file": "library/gdtf/acme/ACME_ACME_AECO_20_INTL_AECO_20_INTL_72202.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-aeco-30-ip-aeco-30-ip-102772",
+    "file": "library/gdtf/acme/ACME_ACME_AECO_30_IP_AECO_30_IP_102772.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-aeco-5-139545",
+    "file": "library/gdtf/acme/ACME_ACME_AECO_5_139545.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-aeco-5-aeco-5-71610",
+    "file": "library/gdtf/acme/ACME_ACME_AECO_5_AECO_5_71610.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-aeco-8-72102",
+    "file": "library/gdtf/acme/ACME_ACME_AECO_8_72102.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-aj-1940z-aj-1940z-72203",
+    "file": "library/gdtf/acme/ACME_ACME_AJ_1940Z_AJ_1940Z_72203.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-aj-1940z-cb-aj-1940z-cb-72205",
+    "file": "library/gdtf/acme/ACME_ACME_AJ_1940Z_CB_AJ_1940Z_CB_72205.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-am-wash300-test-17237",
+    "file": "library/gdtf/acme/ACME_ACME_AM-WASH300-TEST_17237.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-am-wash300-9153",
+    "file": "library/gdtf/acme/ACME_ACME_AM-WASH300_9153.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-andromeda-xp-480-bsw-72099",
+    "file": "library/gdtf/acme/ACME_ACME_ANDROMEDA_XP_480_BSW_72099.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-anima-c-panel-36-rgb-72098",
+    "file": "library/gdtf/acme/ACME_ACME_ANIMA_C_PANEL_36_RGB_72098.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-aquarius-xp-320-beam-ip-72096",
+    "file": "library/gdtf/acme/ACME_ACME_AQUARIUS_XP_320_BEAM_IP_72096.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-ares-xp-500-beam-72094",
+    "file": "library/gdtf/acme/ACME_ACME_ARES_XP_500_BEAM_72094.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-aurora-cm-250z-rgbw-73068",
+    "file": "library/gdtf/acme/ACME_ACME_AURORA_CM-250Z_RGBW_73068.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-autolux-auto-600-130869",
+    "file": "library/gdtf/acme/ACME_ACME_AUTOLUX_AUTO_600_130869.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-beamone-beam-1-115631",
+    "file": "library/gdtf/acme/ACME_ACME_BEAMONE_BEAM_1_115631.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-beluga-mp-500z-ip-72211",
+    "file": "library/gdtf/acme/ACME_ACME_BELUGA_MP-500Z_IP_72211.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-big-bang-pm-1-72213",
+    "file": "library/gdtf/acme/ACME_ACME_BIG_BANG_PM_1_72213.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-big-bang-pm-1-iii-95790",
+    "file": "library/gdtf/acme/ACME_ACME_BIG_BANG_PM_1_III_95790.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-blinder-line-10-ip-141522",
+    "file": "library/gdtf/acme/ACME_ACME_BLINDER_LINE_10_IP_141522.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-blinder-line-10-ip-blb-10-ip-146877",
+    "file": "library/gdtf/acme/ACME_ACME_BLINDER_LINE_10_IP_BLB_10_IP_146877.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-blinder-line-5-ip-blb-5-ip-142837",
+    "file": "library/gdtf/acme/ACME_ACME_BLINDER_LINE_5_IP_BLB_5_IP_142837.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-bonzai-beam-200-ii-72089",
+    "file": "library/gdtf/acme/ACME_ACME_BONZAI_BEAM_200_II_72089.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-bootes-beam-400-73537",
+    "file": "library/gdtf/acme/ACME_ACME_BOOTES_BEAM_400_73537.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-boxer-beam-100-72088",
+    "file": "library/gdtf/acme/ACME_ACME_BOXER_BEAM_100_72088.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-bright-panel-3612-72087",
+    "file": "library/gdtf/acme/ACME_ACME_BRIGHT_PANEL_3612_72087.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-bw-14-fc-ii-3679",
+    "file": "library/gdtf/acme/ACME_ACME_BW-14_FC_II_3679.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-bw-545-3680",
+    "file": "library/gdtf/acme/ACME_ACME_BW-545_3680.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-cetus-xp-380-beam-ip-73305",
+    "file": "library/gdtf/acme/ACME_ACME_CETUS_XP-380_BEAM_IP_73305.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-champagne-am1-cw-72084",
+    "file": "library/gdtf/acme/ACME_ACME_CHAMPAGNE_AM1_CW_72084.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-champagne-am1-ww-72082",
+    "file": "library/gdtf/acme/ACME_ACME_CHAMPAGNE_AM1_WW_72082.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-champagne-nw-am1-nw-72081",
+    "file": "library/gdtf/acme/ACME_ACME_CHAMPAGNE_NW_AM1_NW_72081.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-chiron-xp-380-beam-ii-73438",
+    "file": "library/gdtf/acme/ACME_ACME_CHIRON_XP_380_BEAM_II_73438.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-cinderella-wash-100-72080",
+    "file": "library/gdtf/acme/ACME_ACME_CINDERELLA_WASH_100_72080.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-cm-320zr-54019",
+    "file": "library/gdtf/acme/ACME_ACME_CM-320ZR_54019.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-cm-350ziii-26263",
+    "file": "library/gdtf/acme/ACME_ACME_CM-350ZIII_26263.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-cm-350z-glam-26264",
+    "file": "library/gdtf/acme/ACME_ACME_CM-350Z_GLAM_26264.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-cocktail-am1-rgbw-72078",
+    "file": "library/gdtf/acme/ACME_ACME_COCKTAIL_AM1_RGBW_72078.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-coolie-186-bw-186-72076",
+    "file": "library/gdtf/acme/ACME_ACME_COOLIE_186_BW_186_72076.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-coolie-545-bw-545-73065",
+    "file": "library/gdtf/acme/ACME_ACME_COOLIE_545_BW-545_73065.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-coolie-546-bw-546-72075",
+    "file": "library/gdtf/acme/ACME_ACME_COOLIE_546_BW_546_72075.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-coolie-bw-14-fc-ii-73064",
+    "file": "library/gdtf/acme/ACME_ACME_COOLIE_BW-14_FC_II_73064.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-cyclone-cm-150-ip-142835",
+    "file": "library/gdtf/acme/ACME_ACME_CYCLONE_CM_150_IP_142835.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-detonator-beam-200-iii-72074",
+    "file": "library/gdtf/acme/ACME_ACME_DETONATOR_BEAM_200_III_72074.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-diabolo-300-am-wash300-72210",
+    "file": "library/gdtf/acme/ACME_ACME_DIABOLO_300_AM-WASH300_72210.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-diabolo-500-wash-500-71770",
+    "file": "library/gdtf/acme/ACME_ACME_DIABOLO_500_WASH_500_71770.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-diamonds-ii-ls-1010-rgb-ii-71756",
+    "file": "library/gdtf/acme/ACME_ACME_DIAMONDS_II_LS_1010_RGB_II_71756.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-dotchain-300-bar-300-71750",
+    "file": "library/gdtf/acme/ACME_ACME_DOTCHAIN_300_BAR_300_71750.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-dotchain-500-bar-500-71748",
+    "file": "library/gdtf/acme/ACME_ACME_DOTCHAIN_500_BAR_500_71748.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-dotchain-640-bar-640-71745",
+    "file": "library/gdtf/acme/ACME_ACME_DOTCHAIN_640_BAR_640_71745.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-dotline180-tb-630-qw-119312",
+    "file": "library/gdtf/acme/ACME_ACME_DOTLINE180_TB-630_QW_119312.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-dotline360-tb-1230-qw-73282",
+    "file": "library/gdtf/acme/ACME_ACME_DOTLINE360_TB-1230_QW_73282.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-dotus-beam-15-71744",
+    "file": "library/gdtf/acme/ACME_ACME_DOTUS_BEAM_15_71744.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-dot-ls-100-71752",
+    "file": "library/gdtf/acme/ACME_ACME_DOT_LS_100_71752.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-dot-ls-100-ii-71753",
+    "file": "library/gdtf/acme/ACME_ACME_DOT_LS_100_II_71753.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-ellipsoidal-300-cwe-300-cw-71743",
+    "file": "library/gdtf/acme/ACME_ACME_ELLIPSOIDAL_300_CWE-300_CW_71743.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-ellipsoidal-300-d1530-e-300-d1530-71742",
+    "file": "library/gdtf/acme/ACME_ACME_ELLIPSOIDAL_300_D1530_E-300_D1530_71742.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-ellipsoidal-300-d2550e-300-d2550-71741",
+    "file": "library/gdtf/acme/ACME_ACME_ELLIPSOIDAL_300_D2550E-300_D2550_71741.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-ellipsoidal-300-ww-e-300-ww-71740",
+    "file": "library/gdtf/acme/ACME_ACME_ELLIPSOIDAL_300_WW_E-300_WW_71740.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-ellipsoidal-40-dmx-e-40d-cw-70759",
+    "file": "library/gdtf/acme/ACME_ACME_ELLIPSOIDAL_40_DMX_E-40D_CW_70759.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-ellipsoidal-40-dmx-e-40d-ww-70757",
+    "file": "library/gdtf/acme/ACME_ACME_ELLIPSOIDAL_40_DMX_E-40D_WW_70757.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-el-diablo-beam-180-103736",
+    "file": "library/gdtf/acme/ACME_ACME_EL_DIABLO_BEAM_180_103736.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-energy-hybrid-xa-400-bsw-72189",
+    "file": "library/gdtf/acme/ACME_ACME_ENERGY_HYBRID_XA-400_BSW_72189.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-energy-spot-pro-xa-400spot-pro-72190",
+    "file": "library/gdtf/acme/ACME_ACME_ENERGY_SPOT_PRO_XA-400SPOT_PRO_72190.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-eyeflash-2-blinder-2-rgb-52770",
+    "file": "library/gdtf/acme/ACME_ACME_EYEFLASH_2_BLINDER_2_RGB_52770.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-eyeflash-2-rgb-blinder-2-rgb-72108",
+    "file": "library/gdtf/acme/ACME_ACME_EYEFLASH_2_RGB_BLINDER_2_RGB_72108.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-eyeflash-2-ww-blinder-2-ww-72103",
+    "file": "library/gdtf/acme/ACME_ACME_EYEFLASH_2_WW_BLINDER_2_WW_72103.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-eyes-cc-beam-50c-rgbw-71737",
+    "file": "library/gdtf/acme/ACME_ACME_EYES_CC_BEAM_50C_RGBW_71737.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-eyes-cvw-beam-50c-vw-71735",
+    "file": "library/gdtf/acme/ACME_ACME_EYES_CVW_BEAM_50C_VW_71735.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-eyes-c-beam-50-rgbw-71739",
+    "file": "library/gdtf/acme/ACME_ACME_EYES_C_BEAM_50_RGBW_71739.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-eyes-vw-beam-50-vw-71734",
+    "file": "library/gdtf/acme/ACME_ACME_EYES_VW_BEAM_50_VW_71734.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-face-600-71732",
+    "file": "library/gdtf/acme/ACME_ACME_FACE_600_71732.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-farandole-am-bar-72206",
+    "file": "library/gdtf/acme/ACME_ACME_FARANDOLE_AM-BAR_72206.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-flamenco-cw-am-par-200-cw-72207",
+    "file": "library/gdtf/acme/ACME_ACME_FLAMENCO_CW_AM_PAR_200_CW_72207.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-flamenco-ww-am-par-200-ww-72208",
+    "file": "library/gdtf/acme/ACME_ACME_FLAMENCO_WW_AM_PAR_200_WW_72208.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-flandina-12-bar-12-71731",
+    "file": "library/gdtf/acme/ACME_ACME_FLANDINA_12_BAR_12_71731.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-flandina-12-ip-bar-12-ip-ii-71730",
+    "file": "library/gdtf/acme/ACME_ACME_FLANDINA_12_IP_BAR_12_IP_II_71730.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-flandina-18-bar-18-73090",
+    "file": "library/gdtf/acme/ACME_ACME_FLANDINA_18_BAR_18_73090.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-flandina-22-ip-bar-22-ip-71618",
+    "file": "library/gdtf/acme/ACME_ACME_FLANDINA_22_IP_BAR_22_IP_71618.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-flashbolt-strobe-4e-71613",
+    "file": "library/gdtf/acme/ACME_ACME_FLASHBOLT_STROBE_4E_71613.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-flashdot-strobe-3-71714",
+    "file": "library/gdtf/acme/ACME_ACME_FLASHDOT_STROBE_3_71714.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-geist-beamxa-500-beam-71886",
+    "file": "library/gdtf/acme/ACME_ACME_GEIST_BEAMXA_500_BEAM_71886.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-geist-bswfxa-500-bswf-88142",
+    "file": "library/gdtf/acme/ACME_ACME_GEIST_BSWFXA-500_BSWF_88142.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-geist-bswf-xa-500-bswf-73288",
+    "file": "library/gdtf/acme/ACME_ACME_GEIST_BSWF_XA-500_BSWF_73288.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-geist-framing-xa-500-framing-73289",
+    "file": "library/gdtf/acme/ACME_ACME_GEIST_FRAMING_XA-500_Framing_73289.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-gemini-cm-560zooo-135443",
+    "file": "library/gdtf/acme/ACME_ACME_GEMINI_CM_560ZOOO_135443.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-gemini-cm-560z-107871",
+    "file": "library/gdtf/acme/ACME_ACME_GEMINI_CM_560Z_107871.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-ginamp-strobe-2cn-103740",
+    "file": "library/gdtf/acme/ACME_ACME_GINAMP_STROBE_2CN_103740.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-ginamp-strobe-2int-103739",
+    "file": "library/gdtf/acme/ACME_ACME_GINAMP_STROBE_2INT_103739.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-glamour-350z-cm-350z-73070",
+    "file": "library/gdtf/acme/ACME_ACME_GLAMOUR_350Z_CM-350Z_73070.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-glamour-700z-cm-700z14-16-26ch-73079",
+    "file": "library/gdtf/acme/ACME_ACME_GLAMOUR_700Z_CM-700Z14_16_26CH_73079.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-glamour-700z-cm-700z15-17-27ch-73080",
+    "file": "library/gdtf/acme/ACME_ACME_GLAMOUR_700Z_CM-700Z15_17_27CH_73080.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-glamour-700z-rgba-cm-700z-rgba-73081",
+    "file": "library/gdtf/acme/ACME_ACME_GLAMOUR_700Z_RGBA_CM-700Z_RGBA_73081.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-glory-framing-1000-xp-1000sz-f-73518",
+    "file": "library/gdtf/acme/ACME_ACME_GLORY_FRAMING_1000_XP-1000SZ_F_73518.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-glory-framing-5000-xp-5000sz-f-73521",
+    "file": "library/gdtf/acme/ACME_ACME_GLORY_FRAMING_5000_XP-5000SZ_F_73521.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-glory-wash-1000-xp-1000-wz-73447",
+    "file": "library/gdtf/acme/ACME_ACME_GLORY_WASH_1000_XP_1000_WZ_73447.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-glory-wash-5000-xp-5000-wz-73519",
+    "file": "library/gdtf/acme/ACME_ACME_GLORY_WASH_5000_XP_5000_WZ_73519.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-godfather-spot-100-71715",
+    "file": "library/gdtf/acme/ACME_ACME_GODFATHER_SPOT_100_71715.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-guitar-spot-600-71719",
+    "file": "library/gdtf/acme/ACME_ACME_GUITAR_SPOT_600_71719.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-hail-strobe-5-ip-73204",
+    "file": "library/gdtf/acme/ACME_ACME_HAIL_STROBE_5_IP_73204.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-hueline-16-ip-hl-16-ip-142839",
+    "file": "library/gdtf/acme/ACME_ACME_HUELINE_16_IP_HL_16_IP_142839.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-hygiea-xp-100-beam-71720",
+    "file": "library/gdtf/acme/ACME_ACME_HYGIEA_XP_100_BEAM_71720.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-hyperzone-cm-7-ip-142841",
+    "file": "library/gdtf/acme/ACME_ACME_HYPERZONE_CM_7_IP_142841.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-hyperzone-cm-7-ip-sousa-132097",
+    "file": "library/gdtf/acme/ACME_ACME_HYPERZONE_CM_7_IP_SOUSA_132097.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-icarus-320-cm-320zr-71729",
+    "file": "library/gdtf/acme/ACME_ACME_ICARUS_320_CM-320ZR_71729.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-icarus-620cm-620z-72470",
+    "file": "library/gdtf/acme/ACME_ACME_ICARUS_620CM-620Z_72470.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-kraken-xl-300-beam-ip-73536",
+    "file": "library/gdtf/acme/ACME_ACME_KRAKEN_XL_300_BEAM_IP_73536.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-laser-bar-rgb-ls-608-rgb-72191",
+    "file": "library/gdtf/acme/ACME_ACME_LASER_BAR_RGB_LS-608_RGB_72191.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-led-par-200-73206",
+    "file": "library/gdtf/acme/ACME_ACME_LED-PAR_200_73206.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-leo-xp-550-bsw-110309",
+    "file": "library/gdtf/acme/ACME_ACME_LEO_XP-550_BSW_110309.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-libra-xp-380-bsw-73442",
+    "file": "library/gdtf/acme/ACME_ACME_LIBRA_XP_380_BSW_73442.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-lightning-strobe-6-ip-73257",
+    "file": "library/gdtf/acme/ACME_ACME_LIGHTNING_STROBE_6_IP_73257.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-lightning-x-strobe-7-ip-102770",
+    "file": "library/gdtf/acme/ACME_ACME_LIGHTNING_X_STROBE_7_IP_102770.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-lineforce-10-ip-cyc-10-ip-142842",
+    "file": "library/gdtf/acme/ACME_ACME_LINEFORCE_10_IP_CYC_10_IP_142842.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-lyraxa-1000-bswf-ip-48377",
+    "file": "library/gdtf/acme/ACME_ACME_LYRAXA_1000_BSWF_IP_48377.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-lyra-bwxa-1000-bw-ip-73535",
+    "file": "library/gdtf/acme/ACME_ACME_LYRA_BWXA_1000_BW_IP_73535.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-lyra-xa-1000-bswf-ip-85710",
+    "file": "library/gdtf/acme/ACME_ACME_LYRA_XA_1000_BSWF_IP_85710.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-mana-hybrid-xa-600-bsw-ip-80300",
+    "file": "library/gdtf/acme/ACME_ACME_MANA_HYBRID_XA_600_BSW_IP_80300.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-mana-profile-xa-600-bswf-ip-73172",
+    "file": "library/gdtf/acme/ACME_ACME_MANA_PROFILE_XA_600_BSWF_IP_73172.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-megatron-auto-500-102768",
+    "file": "library/gdtf/acme/ACME_ACME_MEGATRON_AUTO_500_102768.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-mega-strobe-5000-led-st5000-73207",
+    "file": "library/gdtf/acme/ACME_ACME_MEGA_STROBE_5000_LED-ST5000_73207.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-mega-strobe-5000-led-st5000-rgb-73208",
+    "file": "library/gdtf/acme/ACME_ACME_MEGA_STROBE_5000_LED-ST5000_RGB_73208.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-mp-300z-3956",
+    "file": "library/gdtf/acme/ACME_ACME_MP-300Z_3956.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-mp-600z-ip-54020",
+    "file": "library/gdtf/acme/ACME_ACME_MP-600Z_IP_54020.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-nebula-cw-cm-250z-cw-73066",
+    "file": "library/gdtf/acme/ACME_ACME_NEBULA_CW_CM-250Z_CW_73066.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-nebula-ww-cm-250z-ww-73067",
+    "file": "library/gdtf/acme/ACME_ACME_NEBULA_WW_CM-250Z_WW_73067.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-neozone-cm-800z-148927",
+    "file": "library/gdtf/acme/ACME_ACME_NEOZONE_CM_800Z_148927.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-ocellaris-mp-500z-ip-rgbw-73260",
+    "file": "library/gdtf/acme/ACME_ACME_OCELLARIS_MP-500Z_IP_RGBW_73260.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-orion-xp-260-beam-73304",
+    "file": "library/gdtf/acme/ACME_ACME_ORION_XP-260_BEAM_73304.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-oxozone-cm-800z-ip-82113",
+    "file": "library/gdtf/acme/ACME_ACME_OXOZONE_CM-800Z_IP_82113.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-oxozone-cm-800z-ip-88549",
+    "file": "library/gdtf/acme/ACME_ACME_OXOZONE_CM-800Z_IP_88549.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-oxygen-cm-400z16-36ch-73071",
+    "file": "library/gdtf/acme/ACME_ACME_OXYGEN_CM-400Z16_36CH_73071.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-oxygen-cm-400z17-37ch-73072",
+    "file": "library/gdtf/acme/ACME_ACME_OXYGEN_CM-400Z17_37CH_73072.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-ozone-cm-400z-ip16-36ch-73073",
+    "file": "library/gdtf/acme/ACME_ACME_OZONE_CM-400Z_IP16_36CH_73073.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-ozone-cm-400z-ip-17-37ch-73074",
+    "file": "library/gdtf/acme/ACME_ACME_OZONE_CM-400Z_IP_17_37CH_73074.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-pageant-300zr-cm-300zr-94577",
+    "file": "library/gdtf/acme/ACME_ACME_PAGEANT_300ZR_CM-300ZR_94577.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-pageant-600z-ii-cm-600z-ii14-26ch-73075",
+    "file": "library/gdtf/acme/ACME_ACME_PAGEANT_600Z_II_CM-600Z_II14_26CH_73075.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-pageant-600z-ii-cm-600z-ii16ch-73076",
+    "file": "library/gdtf/acme/ACME_ACME_PAGEANT_600Z_II_CM-600Z_II16CH_73076.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-pasodoble-par-12-72321",
+    "file": "library/gdtf/acme/ACME_ACME_PASODOBLE_PAR_12_72321.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-photon-hybrid-500-xl-500-bsw-ip-141917",
+    "file": "library/gdtf/acme/ACME_ACME_PHOTON_HYBRID_500_XL_500_BSW_IP_141917.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-pixel-100-pixel-power-8-72320",
+    "file": "library/gdtf/acme/ACME_ACME_PIXEL_100_PIXEL_POWER_8_72320.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-pixel-line-ip-500-strobe-1-ip-128048",
+    "file": "library/gdtf/acme/ACME_ACME_PIXEL_LINE_IP_500_STROBE_1_IP_128048.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-pixel-line-ip-strobe-3-ip-155978",
+    "file": "library/gdtf/acme/ACME_ACME_PIXEL_LINE_IP_STROBE_3_IP_155978.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-pulsar-plus-s2-cm-s2-ip-142833",
+    "file": "library/gdtf/acme/ACME_ACME_PULSAR_PLUS_S2_CM_S2_IP_142833.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-pulsar-s2cm-s2-ip-113951",
+    "file": "library/gdtf/acme/ACME_ACME_PULSAR_S2CM_S2_IP_113951.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-pulsar-s2-cm-s2-126536",
+    "file": "library/gdtf/acme/ACME_ACME_PULSAR_S2_CM_S2_126536.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-pixel-line-ip-strobe-3-ip-mode-10-95827",
+    "file": "library/gdtf/acme/ACME_ACME_Pixel_Line_IP_STROBE_3_IP_Mode_10_95827.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-pixel-line-ip-strobe-3-ip-mode-11-144813",
+    "file": "library/gdtf/acme/ACME_ACME_Pixel_Line_IP_STROBE_3_IP_Mode_11_144813.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-ray-500-beam-500-72316",
+    "file": "library/gdtf/acme/ACME_ACME_RAY_500_BEAM_500_72316.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-riesling-bsw-200-iii-73525",
+    "file": "library/gdtf/acme/ACME_ACME_RIESLING_BSW_200_III_73525.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-rotor-bar-bar-200-72312",
+    "file": "library/gdtf/acme/ACME_ACME_ROTOR_BAR_BAR_200_72312.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-royaldotbar-560-79752",
+    "file": "library/gdtf/acme/ACME_ACME_ROYALDOTBAR_560_79752.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-saber-beam-fx-xp-380-beam-71211",
+    "file": "library/gdtf/acme/ACME_ACME_SABER_BEAM_FX_XP_380_BEAM_71211.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-saber-hybrid-pro-xp-16r-bsw-pro-73302",
+    "file": "library/gdtf/acme/ACME_ACME_SABER_HYBRID_PRO_XP_16R_BSW_PRO_73302.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-saber-hybrid-xp-16r-bsw-73530",
+    "file": "library/gdtf/acme/ACME_ACME_SABER_HYBRID_XP_16R_BSW_73530.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-saber-mini-ae-610-beam-72197",
+    "file": "library/gdtf/acme/ACME_ACME_SABER_MINI_AE-610_BEAM_72197.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-sagitta-xp-400-beam-ii-72311",
+    "file": "library/gdtf/acme/ACME_ACME_SAGITTA_XP_400_BEAM_II_72311.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-sana-beam-xa-300-beam-ip-142831",
+    "file": "library/gdtf/acme/ACME_ACME_SANA_BEAM_XA_300_BEAM_IP_142831.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-sana-profile-xa-300-bswf-ip-142834",
+    "file": "library/gdtf/acme/ACME_ACME_SANA_PROFILE_XA_300_BSWF_IP_142834.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-sandane-frost-par-54-ip-142844",
+    "file": "library/gdtf/acme/ACME_ACME_SANDANE_FROST_PAR_54_IP_142844.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-sandane-frost-par-54-ip-ef-72308",
+    "file": "library/gdtf/acme/ACME_ACME_SANDANE_FROST_PAR_54_IP_EF_72308.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-sandane-frost-par-54-ip-ef-88355",
+    "file": "library/gdtf/acme/ACME_ACME_SANDANE_FROST_PAR_54_IP_EF_88355.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-scorpius-xp-550-beam-ip-72109",
+    "file": "library/gdtf/acme/ACME_ACME_SCORPIUS_XP_550_BEAM_IP_72109.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-shakan-beam-300-72307",
+    "file": "library/gdtf/acme/ACME_ACME_SHAKAN_BEAM_300_72307.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-shine-ls-100-ip-70721",
+    "file": "library/gdtf/acme/ACME_ACME_SHINE_LS_100_IP_70721.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-snowstorm-bl-1000-ii-70717",
+    "file": "library/gdtf/acme/ACME_ACME_SNOWSTORM_BL_1000_II_70717.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-solaris-cm-s6-73089",
+    "file": "library/gdtf/acme/ACME_ACME_SOLARIS_CM-S6_73089.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-solar-flare-ii-xa-1000-bswf-ii-73262",
+    "file": "library/gdtf/acme/ACME_ACME_SOLAR_FLARE_II_XA-1000_BSWF_II_73262.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-solar-impulse-xa-1200-bswf-91356",
+    "file": "library/gdtf/acme/ACME_ACME_SOLAR_IMPULSE_XA_1200_BSWF_91356.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-solar-wind-xa-500-bsw-73531",
+    "file": "library/gdtf/acme/ACME_ACME_SOLAR_WIND_XA_500_BSW_73531.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-sparkline-tb-2210-72305",
+    "file": "library/gdtf/acme/ACME_ACME_SPARKLINE_TB_2210_72305.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-sparkling-am3-71507",
+    "file": "library/gdtf/acme/ACME_ACME_SPARKLING_AM3_71507.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-spartan-hybrid-xp-20r-bsw-73266",
+    "file": "library/gdtf/acme/ACME_ACME_SPARTAN_HYBRID_XP-20R_BSW_73266.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-stagepar-400-zoom-ip-mp-400z-ipblank9-118118",
+    "file": "library/gdtf/acme/ACME_ACME_STAGEPAR_400_ZOOM_IP_MP-400Z_IPBlank9_118118.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-stagepar-400-zoom-ip-mp-400z-ip-73258",
+    "file": "library/gdtf/acme/ACME_ACME_STAGEPAR_400_ZOOM_IP_MP-400Z_IP_73258.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-stage-blinder-ip-cw-bl-200-cw-70709",
+    "file": "library/gdtf/acme/ACME_ACME_STAGE_BLINDER_IP_CW_BL-200_CW_70709.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-stage-blinder-ip-rgbwbl-200-rgbw-75537",
+    "file": "library/gdtf/acme/ACME_ACME_STAGE_BLINDER_IP_RGBWBL-200_RGBW_75537.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-stage-blinder-ip-vwbl-200-vw-54040",
+    "file": "library/gdtf/acme/ACME_ACME_STAGE_BLINDER_IP_VWBL-200_VW_54040.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-stage-blinder-ip-vwbl-200-ww-54066",
+    "file": "library/gdtf/acme/ACME_ACME_STAGE_BLINDER_IP_VWBL-200_WW_54066.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-stage-blinder-ip-vw-bl-200-vw-70701",
+    "file": "library/gdtf/acme/ACME_ACME_STAGE_BLINDER_IP_VW_BL-200_VW_70701.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-stage-blinder-ip-ww2-bl-200-ww2-70714",
+    "file": "library/gdtf/acme/ACME_ACME_STAGE_BLINDER_IP_WW2_BL-200_WW2_70714.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-stage-par-100-colour-led-par100-rgba-ip-142843",
+    "file": "library/gdtf/acme/ACME_ACME_STAGE_PAR_100_COLOUR_LED-PAR100_RGBA_IP_142843.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-stage-par-100-ip-cw-led-par100-cw-ip-70715",
+    "file": "library/gdtf/acme/ACME_ACME_STAGE_PAR_100_IP_CW_LED-PAR100_CW_IP_70715.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-stage-par-100-ip-ww-led-par-100-ww-ip-70719",
+    "file": "library/gdtf/acme/ACME_ACME_STAGE_PAR_100_IP_WW_LED-PAR_100_WW_IP_70719.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-stage-par-600-zoom-ipmp-600z-ip-73259",
+    "file": "library/gdtf/acme/ACME_ACME_STAGE_PAR_600_ZOOM_IPMP-600Z_IP_73259.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-stage-par-cct-bl-100-vw-73062",
+    "file": "library/gdtf/acme/ACME_ACME_STAGE_PAR_CCT_BL-100_VW_73062.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-stage-par-colour-bl-100-rgbw-73060",
+    "file": "library/gdtf/acme/ACME_ACME_STAGE_PAR_COLOUR_BL-100_RGBW_73060.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-stage-par-tungsten-bl-100-ww2-73063",
+    "file": "library/gdtf/acme/ACME_ACME_STAGE_PAR_TUNGSTEN_BL-100_WW2_73063.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-stage-par-uv-bl-100-uv-73061",
+    "file": "library/gdtf/acme/ACME_ACME_STAGE_PAR_UV_BL-100_UV_73061.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-stage-par-zoom-colour-bl-100z-rgbl-72303",
+    "file": "library/gdtf/acme/ACME_ACME_STAGE_PAR_ZOOM_COLOUR_BL-100Z_RGBL_72303.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-storm-mb-1000-ii-73269",
+    "file": "library/gdtf/acme/ACME_ACME_STORM_MB_1000_II_73269.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-stzip-line-sl-100-ipace-138010",
+    "file": "library/gdtf/acme/ACME_ACME_STZIP_LINE_SL_100_IPACE_138010.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-sunrise-xa-1000-bw-85711",
+    "file": "library/gdtf/acme/ACME_ACME_SUNRISE_XA_1000_BW_85711.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-sunrise-xa-1200-bw-85712",
+    "file": "library/gdtf/acme/ACME_ACME_SUNRISE_XA_1200_BW_85712.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-supernova-lt-xa-2000-bswf-ip-lt-152484",
+    "file": "library/gdtf/acme/ACME_ACME_SUPERNOVA_LT_XA_2000_BSWF_IP_LT_152484.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-supernova-xa-2000-bswf-ip-102775",
+    "file": "library/gdtf/acme/ACME_ACME_SUPERNOVA_XA_2000_BSWF_IP_102775.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-super-dotline-tb-1060-int12-107883",
+    "file": "library/gdtf/acme/ACME_ACME_SUPER_DOTLINE_TB_1060_INT12_107883.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-tango-par-7-72298",
+    "file": "library/gdtf/acme/ACME_ACME_TANGO_PAR_7_72298.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-tb-630-qw-73279",
+    "file": "library/gdtf/acme/ACME_ACME_TB-630_QW_73279.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-theatre-led-flood-cw-cyc-200-cw-72297",
+    "file": "library/gdtf/acme/ACME_ACME_THEATRE_LED_FLOOD_CW_CYC-200_CW_72297.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-theatre-led-flood-ww-cyc-200-ww-72296",
+    "file": "library/gdtf/acme/ACME_ACME_THEATRE_LED_FLOOD_WW_CYC-200_WW_72296.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-theatre-spot-150m-cw-ts-150m-cw-70742",
+    "file": "library/gdtf/acme/ACME_ACME_THEATRE_SPOT_150M_CW_TS-150M_CW_70742.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-theatre-spot-150m-ww-ts-150m-ww-70743",
+    "file": "library/gdtf/acme/ACME_ACME_THEATRE_SPOT_150M_WW_TS-150M_WW_70743.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-theatre-spot-150-cw-ts-150-cw-70740",
+    "file": "library/gdtf/acme/ACME_ACME_THEATRE_SPOT_150_CW_TS-150_CW_70740.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-theatre-spot-150-ww-ts-150-ww-70741",
+    "file": "library/gdtf/acme/ACME_ACME_THEATRE_SPOT_150_WW_TS-150_WW_70741.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-theatre-spot-300m-cw-ts-300m-cw-70748",
+    "file": "library/gdtf/acme/ACME_ACME_THEATRE_SPOT_300M_CW_TS-300M_CW_70748.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-theatre-spot-300m-ww-ts-300m-ww-70750",
+    "file": "library/gdtf/acme/ACME_ACME_THEATRE_SPOT_300M_WW_TS-300M_WW_70750.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-theatre-spot-300-cw-ts-300-cw-70746",
+    "file": "library/gdtf/acme/ACME_ACME_THEATRE_SPOT_300_CW_TS-300_CW_70746.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-theatre-spot-300-ww-ts-300-ww-70747",
+    "file": "library/gdtf/acme/ACME_ACME_THEATRE_SPOT_300_WW_TS-300_WW_70747.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-theatre-spot-500-cw-ts-500-cw-70754",
+    "file": "library/gdtf/acme/ACME_ACME_THEATRE_SPOT_500_CW_TS_500_CW_70754.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-theatre-spot-500-rgbww-ts-500-rgbww-70755",
+    "file": "library/gdtf/acme/ACME_ACME_THEATRE_SPOT_500_RGBWW_TS_500_RGBWW_70755.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-theatre-spot-500-ww-ts-500-ww-70756",
+    "file": "library/gdtf/acme/ACME_ACME_THEATRE_SPOT_500_WW_TS_500_WW_70756.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-thetacm-1000-zf-72231",
+    "file": "library/gdtf/acme/ACME_ACME_THETACM_1000_ZF_72231.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-theta-fxcm-1000-z-72293",
+    "file": "library/gdtf/acme/ACME_ACME_THETA_FXCM_1000_Z_72293.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-thunderbolt-lp-14410-70765",
+    "file": "library/gdtf/acme/ACME_ACME_THUNDERBOLT_LP-14410_70765.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-thunderstrucklp-2304-71879",
+    "file": "library/gdtf/acme/ACME_ACME_THUNDERSTRUCKLP-2304_71879.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-thunder-bl-200-cp-72291",
+    "file": "library/gdtf/acme/ACME_ACME_THUNDER_BL-200_CP_72291.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-thunder-breaker-bl-200-vs-120854",
+    "file": "library/gdtf/acme/ACME_ACME_THUNDER_BREAKER_BL-200_VS_120854.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-thunder-roar-bl-200-cs-72290",
+    "file": "library/gdtf/acme/ACME_ACME_THUNDER_ROAR_BL-200_CS_72290.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-tornado-142832",
+    "file": "library/gdtf/acme/ACME_ACME_TORNADO_142832.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-tornado-tb-5-ip-106697",
+    "file": "library/gdtf/acme/ACME_ACME_TORNADO_TB_5_IP_106697.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-tornado-tb-5-ip-109224",
+    "file": "library/gdtf/acme/ACME_ACME_TORNADO_TB_5_IP_109224.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-tornado-tb-5-ip-db-x-kvg-153748",
+    "file": "library/gdtf/acme/ACME_ACME_TORNADO_TB_5_IP_DB_x_KVG_153748.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-tornado-tb-5-ip-int-76648",
+    "file": "library/gdtf/acme/ACME_ACME_TORNADO_TB_5_IP_INT_76648.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-tornado-tb-5-ip-fix-pan-94164",
+    "file": "library/gdtf/acme/ACME_ACME_TORNADO_TB_5_IP_fix_PAN_94164.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-tour-pixel-bar-1010-ii-tb-1010-qw-ii-73280",
+    "file": "library/gdtf/acme/ACME_ACME_TOUR_PIXEL_BAR_1010_II_TB-1010_QW_II_73280.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-tv-light-panel-1000-cw-lp-f1000-cw-70780",
+    "file": "library/gdtf/acme/ACME_ACME_TV_LIGHT_PANEL_1000_CW_LP-F1000_CW_70780.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-tv-light-panel-1000-vw-lp-f1000-vw-73527",
+    "file": "library/gdtf/acme/ACME_ACME_TV_LIGHT_PANEL_1000_VW_LP-F1000_VW_73527.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-tv-light-panel-1000-ww-lp-f1000-ww-70781",
+    "file": "library/gdtf/acme/ACME_ACME_TV_LIGHT_PANEL_1000_WW_LP-F1000_WW_70781.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-tv-light-panel-2000-cw-lp-f2000-cw-70784",
+    "file": "library/gdtf/acme/ACME_ACME_TV_LIGHT_PANEL_2000_CW_LP-F2000_CW_70784.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-tv-light-panel-2000-vwlp-f2000-vw-72026",
+    "file": "library/gdtf/acme/ACME_ACME_TV_LIGHT_PANEL_2000_VWLP-F2000_VW_72026.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-tv-light-panel-2000-ww-lp-f2000-ww-70786",
+    "file": "library/gdtf/acme/ACME_ACME_TV_LIGHT_PANEL_2000_WW_LP-F2000_WW_70786.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-tv-light-panel-3000-lp-f3000-142845",
+    "file": "library/gdtf/acme/ACME_ACME_TV_LIGHT_PANEL_3000_LP_F3000_142845.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-twins-bar-565-72288",
+    "file": "library/gdtf/acme/ACME_ACME_TWINS_BAR_565_72288.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-typhoon-strobe-5-72239",
+    "file": "library/gdtf/acme/ACME_ACME_TYPHOON_STROBE_5_72239.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-virgoxp-550-bsw-ip-ii-72240",
+    "file": "library/gdtf/acme/ACME_ACME_VIRGOXP_550_BSW_IP_II_72240.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-voltka-86127",
+    "file": "library/gdtf/acme/ACME_ACME_VOLTKA_86127.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-voltka-strobe-1-70791",
+    "file": "library/gdtf/acme/ACME_ACME_VOLTKA_STROBE_1_70791.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-whack-xp-5r-beam-ii-73297",
+    "file": "library/gdtf/acme/ACME_ACME_WHACK_XP_5R_BEAM_II_73297.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-willow-420-bsw-420-102766",
+    "file": "library/gdtf/acme/ACME_ACME_WILLOW_420_BSW_420_102766.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-willow-bsw-200-iv-85193",
+    "file": "library/gdtf/acme/ACME_ACME_WILLOW_BSW_200_IV_85193.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-willow-bsw-500-73285",
+    "file": "library/gdtf/acme/ACME_ACME_WILLOW_BSW_500_73285.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-willow-bsw-500-iii-130865",
+    "file": "library/gdtf/acme/ACME_ACME_WILLOW_BSW_500_III_130865.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-world-cup-ball-100-ii-104242",
+    "file": "library/gdtf/acme/ACME_ACME_WORLD_CUP_BALL_100_II_104242.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-xa-600-framing-73291",
+    "file": "library/gdtf/acme/ACME_ACME_XA-600_Framing_73291.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-xp-1000sz-4875",
+    "file": "library/gdtf/acme/ACME_ACME_XP-1000SZ_4875.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-xp-1000sz-c-4877",
+    "file": "library/gdtf/acme/ACME_ACME_XP-1000SZ_C_4877.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-xp-1000sz-t-4879",
+    "file": "library/gdtf/acme/ACME_ACME_XP-1000SZ_T_4879.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-xp-260-beam-2294",
+    "file": "library/gdtf/acme/ACME_ACME_XP-260_BEAM_2294.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-xp-470-bsw-73265",
+    "file": "library/gdtf/acme/ACME_ACME_XP-470_BSW_73265.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-xp-5000sz-nf-4267",
+    "file": "library/gdtf/acme/ACME_ACME_XP-5000SZ_NF_4267.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-aeco-20-166981",
+    "file": "library/gdtf/acme/ACME_AECO_20_166981.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-aeco-30-ip-trx-165878",
+    "file": "library/gdtf/acme/ACME_AECO_30_IP_TRX_165878.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-ares-ip-xp-500-beam-ip-99732",
+    "file": "library/gdtf/acme/ACME_ARES_IP_XP_500_BEAM_IP_99732.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-autolux-auto-600-159036",
+    "file": "library/gdtf/acme/ACME_AUTOLUX_AUTO_600_159036.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-acme-stage-color-lp-4815-153336",
+    "file": "library/gdtf/acme/ACME_Acme_Stage_Color_LP-4815_153336.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-bat-plus-gbf-200-161960",
+    "file": "library/gdtf/acme/ACME_BAT_PLUS_GBF_200_161960.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-beamone-beam-1-158608",
+    "file": "library/gdtf/acme/ACME_BEAMONE_BEAM_1_158608.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-blinder-line-5-ip-141684",
+    "file": "library/gdtf/acme/ACME_BLINDER_LINE_5_IP_141684.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-bl-300-ip-164083",
+    "file": "library/gdtf/acme/ACME_BL_300_IP_164083.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-bright-ef-panel-3612-ef-147480",
+    "file": "library/gdtf/acme/ACME_BRIGHT_EF_PANEL_3612_EF_147480.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-coolie-546bw-546-101096",
+    "file": "library/gdtf/acme/ACME_COOLIE_546BW_546_101096.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-cyclone-cm-150-ip-166111",
+    "file": "library/gdtf/acme/ACME_CYCLONE_CM_150_IP_166111.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-color-fusion-805-100731",
+    "file": "library/gdtf/acme/ACME_Color_Fusion_805_100731.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-detonator-beam-200-iv-int-93442",
+    "file": "library/gdtf/acme/ACME_DETONATOR_BEAM_200_IV_INT_93442.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-diabolo-250-ef-wash-250-ef-158500",
+    "file": "library/gdtf/acme/ACME_DIABOLO_250_EF_WASH_250_EF_158500.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-diabolo-400-wash-400-ii-158598",
+    "file": "library/gdtf/acme/ACME_DIABOLO_400_WASH_400_II_158598.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-ellipsoidal-400-cw-e-400-cw-147510",
+    "file": "library/gdtf/acme/ACME_ELLIPSOIDAL_400_CW_E_400_CW_147510.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-ellipsoidal-400-ww-e-400-ww-159672",
+    "file": "library/gdtf/acme/ACME_ELLIPSOIDAL_400_WW_E_400_WW_159672.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-ellipsoidal-500c-e-500c-164837",
+    "file": "library/gdtf/acme/ACME_ELLIPSOIDAL_500C_E_500C_164837.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-gemini-cm-560z-161954",
+    "file": "library/gdtf/acme/ACME_GEMINI_CM_560Z_161954.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-hail-strobe-5-ip-10-138891",
+    "file": "library/gdtf/acme/ACME_HAIL_STROBE_5_IP_10_138891.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-hail-strobe-5-ip-138924",
+    "file": "library/gdtf/acme/ACME_HAIL_STROBE_5_IP_138924.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-hueline-16-ip-hl-16-ip-159031",
+    "file": "library/gdtf/acme/ACME_HUELINE_16_IP_HL_16_IP_159031.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-hue-18-ip-lthue-18-ip-lt-164537",
+    "file": "library/gdtf/acme/ACME_HUE_18_IP_LTHUE_18_IP_LT_164537.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-hue-6-ip-hue-6-ip-159029",
+    "file": "library/gdtf/acme/ACME_HUE_6_IP_HUE_6_IP_159029.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-hue-line-16-62080",
+    "file": "library/gdtf/acme/ACME_HUE_LINE_16_62080.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-hyper-x-bl-300-ip-166856",
+    "file": "library/gdtf/acme/ACME_HYPER-X_BL_300_IP_166856.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-icarus-320-cm-320zr-94596",
+    "file": "library/gdtf/acme/ACME_ICARUS_320_CM-320ZR_94596.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-linder-line-10-ip-141525",
+    "file": "library/gdtf/acme/ACME_LINDER_LINE_10_IP_141525.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-lineforce-10-ip-cyc-10-ip-159024",
+    "file": "library/gdtf/acme/ACME_LINEFORCE_10_IP_CYC_10_IP_159024.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-mana-profile-xa-600-bswf-ip-159033",
+    "file": "library/gdtf/acme/ACME_MANA_PROFILE_XA_600_BSWF_IP_159033.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-mojito-laser-100-72325",
+    "file": "library/gdtf/acme/ACME_MOJITO_LASER_100_72325.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-neozone-cm-800z-158712",
+    "file": "library/gdtf/acme/ACME_NEOZONE_CM_800Z_158712.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-panel-36-ww-55007",
+    "file": "library/gdtf/acme/ACME_PANEL_36_WW_55007.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-photon-hybrid-500-xl-500-bsw-ip-158605",
+    "file": "library/gdtf/acme/ACME_PHOTON_HYBRID_500_XL_500_BSW_IP_158605.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-pixel-cube-pm-4-ip-165744",
+    "file": "library/gdtf/acme/ACME_PIXEL_CUBE_PM_4_IP_165744.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-pixel-line-43447",
+    "file": "library/gdtf/acme/ACME_PIXEL_LINE_43447.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-pixel-line-ip-117ch-81377",
+    "file": "library/gdtf/acme/ACME_PIXEL_LINE_IP_117ch_81377.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-pixel-line-ip-strobe-3-ip-63524",
+    "file": "library/gdtf/acme/ACME_PIXEL_LINE_IP_STROBE_3_IP_63524.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-pixel-line-slim-500-sl-50-ip-166116",
+    "file": "library/gdtf/acme/ACME_PIXEL_LINE_SLIM_500_SL_50_IP_166116.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-pm-4-ip-160133",
+    "file": "library/gdtf/acme/ACME_PM_4_IP_160133.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-pulsar-plus-s2-cm-s2-ip-160598",
+    "file": "library/gdtf/acme/ACME_PULSAR_PLUS_S2_CM_S2_IP_160598.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-pulsar-s2cm-s2-160599",
+    "file": "library/gdtf/acme/ACME_PULSAR_S2CM_S2_160599.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-pixel-line-ip-118169",
+    "file": "library/gdtf/acme/ACME_Pixel_Line_IP_118169.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-pulsar-s2-85358",
+    "file": "library/gdtf/acme/ACME_Pulsar_S2_85358.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-rayzor-hybrid-87466",
+    "file": "library/gdtf/acme/ACME_RAYZOR_HYBRID_87466.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-sagitta-ip-xp-400-beam-ip-159019",
+    "file": "library/gdtf/acme/ACME_SAGITTA_IP_XP_400_BEAM_IP_159019.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-skytrk-xl-850-beam-ip-159026",
+    "file": "library/gdtf/acme/ACME_SKYTRK_XL_850_BEAM_IP_159026.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-solar-flare-xa-1000-bswf-25619",
+    "file": "library/gdtf/acme/ACME_SOLAR_FLARE_XA-1000_BSWF_25619.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-supernova-ltx-xa-2000-bswf-ip-lt-164362",
+    "file": "library/gdtf/acme/ACME_SUPERNOVA_LTX_XA_2000_BSWF_IP_LT_164362.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-super-dotlinetb-1060-int-142868",
+    "file": "library/gdtf/acme/ACME_SUPER_DOTLINETB_1060_INT_142868.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-super-dotline-av-group-test-63379",
+    "file": "library/gdtf/acme/ACME_SUPER_DOTLINE_AV_GROUP_TEST_63379.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-stage-blinder-ip-36241",
+    "file": "library/gdtf/acme/ACME_Stage_Blinder_IP_36241.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-thunder-ip-bl-200-cp-ip-71317",
+    "file": "library/gdtf/acme/ACME_THUNDER_IP_BL-200_CP_IP_71317.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-tornado-tb-5-ip-160600",
+    "file": "library/gdtf/acme/ACME_TORNADO_TB_5_IP_160600.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-ultra-blinder-ip-bl-200-ip-158596",
+    "file": "library/gdtf/acme/ACME_ULTRA_BLINDER_IP_BL_200_IP_158596.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-ultra-par-ip-bl-100-ip-158610",
+    "file": "library/gdtf/acme/ACME_ULTRA_PAR_IP_BL_100_IP_158610.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-whiplash-tb-5-160601",
+    "file": "library/gdtf/acme/ACME_WHIPLASH_TB_5_160601.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-willow-bsw-500-30971",
+    "file": "library/gdtf/acme/ACME_WILLOW_BSW_500_30971.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-xp-16r-bsw-80366",
+    "file": "library/gdtf/acme/ACME_XP-16R_BSW_80366.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-acme-zeus-xp-500-bsw-ip-103732",
+    "file": "library/gdtf/acme/ACME_ZEUS_XP_500_BSW_IP_103732.gdtf",
+    "brand": "ACME"
+  },
+  {
+    "id": "gdtf-light-sky-8800-c42-107901",
+    "file": "library/gdtf/light-sky/LIGHT_SKY_8800-C42_107901.gdtf",
+    "brand": "Light Sky"
+  },
+  {
+    "id": "gdtf-light-sky-9800-d48-108127",
+    "file": "library/gdtf/light-sky/LIGHT_SKY_9800-D48_108127.gdtf",
+    "brand": "Light Sky"
+  },
+  {
+    "id": "gdtf-light-sky-9800-t48-108128",
+    "file": "library/gdtf/light-sky/LIGHT_SKY_9800-T48_108128.gdtf",
+    "brand": "Light Sky"
+  },
+  {
+    "id": "gdtf-light-sky-aquabeam400-ll-e-94703",
+    "file": "library/gdtf/light-sky/LIGHT_SKY_AQUABEAM400_LL-E_94703.gdtf",
+    "brand": "Light Sky"
+  },
+  {
+    "id": "gdtf-light-sky-aquabeam400-ll-94702",
+    "file": "library/gdtf/light-sky/LIGHT_SKY_AQUABEAM400_LL_94702.gdtf",
+    "brand": "Light Sky"
+  },
+  {
+    "id": "gdtf-light-sky-aquapearl-mini-117081",
+    "file": "library/gdtf/light-sky/LIGHT_SKY_AQUAPEARL-MINI_117081.gdtf",
+    "brand": "Light Sky"
+  },
+  {
+    "id": "gdtf-light-sky-aquapearl-mini-rb-77373",
+    "file": "library/gdtf/light-sky/LIGHT_SKY_AQUAPEARL-MINI_RB_77373.gdtf",
+    "brand": "Light Sky"
+  },
+  {
+    "id": "gdtf-light-sky-aquapearl-pro-116815",
+    "file": "library/gdtf/light-sky/LIGHT_SKY_AQUAPEARL-PRO_116815.gdtf",
+    "brand": "Light Sky"
+  },
+  {
+    "id": "gdtf-light-sky-aquapearl-pro-ii-148652",
+    "file": "library/gdtf/light-sky/LIGHT_SKY_AQUAPEARL-PRO_II_148652.gdtf",
+    "brand": "Light Sky"
+  },
+  {
+    "id": "gdtf-light-sky-aquapearl-smart-148465",
+    "file": "library/gdtf/light-sky/LIGHT_SKY_AQUAPEARL-SMART_148465.gdtf",
+    "brand": "Light Sky"
+  },
+  {
+    "id": "gdtf-light-sky-aurora-94979",
+    "file": "library/gdtf/light-sky/LIGHT_SKY_AURORA_94979.gdtf",
+    "brand": "Light Sky"
+  },
+  {
+    "id": "gdtf-light-sky-aurora-aqua-147921",
+    "file": "library/gdtf/light-sky/LIGHT_SKY_AURORA_AQUA_147921.gdtf",
+    "brand": "Light Sky"
+  },
+  {
+    "id": "gdtf-light-sky-aurora-tide-160543",
+    "file": "library/gdtf/light-sky/LIGHT_SKY_AURORA_TIDE_160543.gdtf",
+    "brand": "Light Sky"
+  },
+  {
+    "id": "gdtf-light-sky-budg-beam-300-150063",
+    "file": "library/gdtf/light-sky/LIGHT_SKY_BUDG_BEAM_300_150063.gdtf",
+    "brand": "Light Sky"
+  },
+  {
+    "id": "gdtf-light-sky-c42-107891",
+    "file": "library/gdtf/light-sky/LIGHT_SKY_C42_107891.gdtf",
+    "brand": "Light Sky"
+  },
+  {
+    "id": "gdtf-light-sky-dophine-smart-107903",
+    "file": "library/gdtf/light-sky/LIGHT_SKY_DOPHINE_SMART_107903.gdtf",
+    "brand": "Light Sky"
+  },
+  {
+    "id": "gdtf-light-sky-economic-aurora-94985",
+    "file": "library/gdtf/light-sky/LIGHT_SKY_Economic_AURORA_94985.gdtf",
+    "brand": "Light Sky"
+  },
+  {
+    "id": "gdtf-light-sky-f1000prifile-37124",
+    "file": "library/gdtf/light-sky/LIGHT_SKY_F1000Prifile_37124.gdtf",
+    "brand": "Light Sky"
+  },
+  {
+    "id": "gdtf-light-sky-f1000-spot-32086",
+    "file": "library/gdtf/light-sky/LIGHT_SKY_F1000_Spot_32086.gdtf",
+    "brand": "Light Sky"
+  },
+  {
+    "id": "gdtf-light-sky-f1700prifile-31454",
+    "file": "library/gdtf/light-sky/LIGHT_SKY_F1700Prifile_31454.gdtf",
+    "brand": "Light Sky"
+  },
+  {
+    "id": "gdtf-light-sky-f230ii-95010",
+    "file": "library/gdtf/light-sky/LIGHT_SKY_F230II_95010.gdtf",
+    "brand": "Light Sky"
+  },
+  {
+    "id": "gdtf-light-sky-f330ii-95012",
+    "file": "library/gdtf/light-sky/LIGHT_SKY_F330II_95012.gdtf",
+    "brand": "Light Sky"
+  },
+  {
+    "id": "gdtf-light-sky-f350ii-95015",
+    "file": "library/gdtf/light-sky/LIGHT_SKY_F350II_95015.gdtf",
+    "brand": "Light Sky"
+  },
+  {
+    "id": "gdtf-light-sky-f400bsw-94878",
+    "file": "library/gdtf/light-sky/LIGHT_SKY_F400BSW_94878.gdtf",
+    "brand": "Light Sky"
+  },
+  {
+    "id": "gdtf-light-sky-f420bsw-26505",
+    "file": "library/gdtf/light-sky/LIGHT_SKY_F420BSW_26505.gdtf",
+    "brand": "Light Sky"
+  },
+  {
+    "id": "gdtf-light-sky-f420-beam-26456",
+    "file": "library/gdtf/light-sky/LIGHT_SKY_F420_Beam_26456.gdtf",
+    "brand": "Light Sky"
+  },
+  {
+    "id": "gdtf-light-sky-f450ii-117705",
+    "file": "library/gdtf/light-sky/LIGHT_SKY_F450II_117705.gdtf",
+    "brand": "Light Sky"
+  },
+  {
+    "id": "gdtf-light-sky-hs520-94902",
+    "file": "library/gdtf/light-sky/LIGHT_SKY_HS520_94902.gdtf",
+    "brand": "Light Sky"
+  },
+  {
+    "id": "gdtf-light-sky-hs880-94903",
+    "file": "library/gdtf/light-sky/LIGHT_SKY_HS880_94903.gdtf",
+    "brand": "Light Sky"
+  },
+  {
+    "id": "gdtf-light-sky-ip1940dii-108780",
+    "file": "library/gdtf/light-sky/LIGHT_SKY_IP1940DII_108780.gdtf",
+    "brand": "Light Sky"
+  },
+  {
+    "id": "gdtf-light-sky-ip2021profile-94559",
+    "file": "library/gdtf/light-sky/LIGHT_SKY_IP2021Profile_94559.gdtf",
+    "brand": "Light Sky"
+  },
+  {
+    "id": "gdtf-light-sky-ip3500bsw-94254",
+    "file": "library/gdtf/light-sky/LIGHT_SKY_IP3500BSW_94254.gdtf",
+    "brand": "Light Sky"
+  },
+  {
+    "id": "gdtf-light-sky-ip3500-94262",
+    "file": "library/gdtf/light-sky/LIGHT_SKY_IP3500_94262.gdtf",
+    "brand": "Light Sky"
+  },
+  {
+    "id": "gdtf-light-sky-ip4000ll-94192",
+    "file": "library/gdtf/light-sky/LIGHT_SKY_IP4000LL_94192.gdtf",
+    "brand": "Light Sky"
+  },
+  {
+    "id": "gdtf-light-sky-ip4000laser-94197",
+    "file": "library/gdtf/light-sky/LIGHT_SKY_IP4000Laser_94197.gdtf",
+    "brand": "Light Sky"
+  },
+  {
+    "id": "gdtf-light-sky-ip520-54494",
+    "file": "library/gdtf/light-sky/LIGHT_SKY_IP520_54494.gdtf",
+    "brand": "Light Sky"
+  },
+  {
+    "id": "gdtf-light-sky-ipl1015-beam-30298",
+    "file": "library/gdtf/light-sky/LIGHT_SKY_IPL1015_Beam_30298.gdtf",
+    "brand": "Light Sky"
+  },
+  {
+    "id": "gdtf-light-sky-ipl1015-wash-64939",
+    "file": "library/gdtf/light-sky/LIGHT_SKY_IPL1015_WASH_64939.gdtf",
+    "brand": "Light Sky"
+  },
+  {
+    "id": "gdtf-light-sky-ipl1215-94189",
+    "file": "library/gdtf/light-sky/LIGHT_SKY_IPL1215_94189.gdtf",
+    "brand": "Light Sky"
+  },
+  {
+    "id": "gdtf-light-sky-ipl1215-ii-108120",
+    "file": "library/gdtf/light-sky/LIGHT_SKY_IPL1215_II_108120.gdtf",
+    "brand": "Light Sky"
+  },
+  {
+    "id": "gdtf-light-sky-ipl1940pro-30027",
+    "file": "library/gdtf/light-sky/LIGHT_SKY_IPL1940Pro_30027.gdtf",
+    "brand": "Light Sky"
+  },
+  {
+    "id": "gdtf-light-sky-ipl300-107905",
+    "file": "library/gdtf/light-sky/LIGHT_SKY_IPL300_107905.gdtf",
+    "brand": "Light Sky"
+  },
+  {
+    "id": "gdtf-light-sky-ipl6103-94886",
+    "file": "library/gdtf/light-sky/LIGHT_SKY_IPL6103_94886.gdtf",
+    "brand": "Light Sky"
+  },
+  {
+    "id": "gdtf-light-sky-ipl61w3-94182",
+    "file": "library/gdtf/light-sky/LIGHT_SKY_IPL61W3_94182.gdtf",
+    "brand": "Light Sky"
+  },
+  {
+    "id": "gdtf-light-sky-ipl715p-94892",
+    "file": "library/gdtf/light-sky/LIGHT_SKY_IPL715P_94892.gdtf",
+    "brand": "Light Sky"
+  },
+  {
+    "id": "gdtf-light-sky-ipl715-94181",
+    "file": "library/gdtf/light-sky/LIGHT_SKY_IPL715_94181.gdtf",
+    "brand": "Light Sky"
+  },
+  {
+    "id": "gdtf-light-sky-ipl7215-26570",
+    "file": "library/gdtf/light-sky/LIGHT_SKY_IPL7215_26570.gdtf",
+    "brand": "Light Sky"
+  },
+  {
+    "id": "gdtf-light-sky-ip-st600-100475",
+    "file": "library/gdtf/light-sky/LIGHT_SKY_IP_ST600_100475.gdtf",
+    "brand": "Light Sky"
+  },
+  {
+    "id": "gdtf-light-sky-l7-d48-108126",
+    "file": "library/gdtf/light-sky/LIGHT_SKY_L7-D48_108126.gdtf",
+    "brand": "Light Sky"
+  },
+  {
+    "id": "gdtf-light-sky-l7-t48-108124",
+    "file": "library/gdtf/light-sky/LIGHT_SKY_L7-T48_108124.gdtf",
+    "brand": "Light Sky"
+  },
+  {
+    "id": "gdtf-light-sky-lunar-beam-95017",
+    "file": "library/gdtf/light-sky/LIGHT_SKY_LUNAR_BEAM_95017.gdtf",
+    "brand": "Light Sky"
+  },
+  {
+    "id": "gdtf-light-sky-lunar-max-95099",
+    "file": "library/gdtf/light-sky/LIGHT_SKY_LUNAR_MAX_95099.gdtf",
+    "brand": "Light Sky"
+  },
+  {
+    "id": "gdtf-light-sky-lunar-bsw-123610",
+    "file": "library/gdtf/light-sky/LIGHT_SKY_Lunar_BSW_123610.gdtf",
+    "brand": "Light Sky"
+  },
+  {
+    "id": "gdtf-light-sky-m1915q4-26580",
+    "file": "library/gdtf/light-sky/LIGHT_SKY_M1915Q4_26580.gdtf",
+    "brand": "Light Sky"
+  },
+  {
+    "id": "gdtf-light-sky-mamba-94896",
+    "file": "library/gdtf/light-sky/LIGHT_SKY_MAMBA_94896.gdtf",
+    "brand": "Light Sky"
+  },
+  {
+    "id": "gdtf-light-sky-mini-laser-aqua-131067",
+    "file": "library/gdtf/light-sky/LIGHT_SKY_MINI_LASER_AQUA_131067.gdtf",
+    "brand": "Light Sky"
+  },
+  {
+    "id": "gdtf-light-sky-mini-laser-aqua-pro-144685",
+    "file": "library/gdtf/light-sky/LIGHT_SKY_MINI_LASER_AQUA_PRO_144685.gdtf",
+    "brand": "Light Sky"
+  },
+  {
+    "id": "gdtf-light-sky-mini-whale-132642",
+    "file": "library/gdtf/light-sky/LIGHT_SKY_MINI_WHALE_132642.gdtf",
+    "brand": "Light Sky"
+  },
+  {
+    "id": "gdtf-light-sky-mini-lunar-108134",
+    "file": "library/gdtf/light-sky/LIGHT_SKY_Mini_Lunar_108134.gdtf",
+    "brand": "Light Sky"
+  },
+  {
+    "id": "gdtf-light-sky-p6-color-128181",
+    "file": "library/gdtf/light-sky/LIGHT_SKY_P6_COLOR_128181.gdtf",
+    "brand": "Light Sky"
+  },
+  {
+    "id": "gdtf-light-sky-pearl-wash-max-150204",
+    "file": "library/gdtf/light-sky/LIGHT_SKY_PEARL_WASH_MAX_150204.gdtf",
+    "brand": "Light Sky"
+  },
+  {
+    "id": "gdtf-light-sky-pike-102764",
+    "file": "library/gdtf/light-sky/LIGHT_SKY_PIKE_102764.gdtf",
+    "brand": "Light Sky"
+  },
+  {
+    "id": "gdtf-light-sky-pl1215-ii-108121",
+    "file": "library/gdtf/light-sky/LIGHT_SKY_PL1215_II_108121.gdtf",
+    "brand": "Light Sky"
+  },
+  {
+    "id": "gdtf-light-sky-pl1915-hc-94893",
+    "file": "library/gdtf/light-sky/LIGHT_SKY_PL1915-HC_94893.gdtf",
+    "brand": "Light Sky"
+  },
+  {
+    "id": "gdtf-light-sky-pl1915-94891",
+    "file": "library/gdtf/light-sky/LIGHT_SKY_PL1915_94891.gdtf",
+    "brand": "Light Sky"
+  },
+  {
+    "id": "gdtf-light-sky-pl6103-94888",
+    "file": "library/gdtf/light-sky/LIGHT_SKY_PL6103_94888.gdtf",
+    "brand": "Light Sky"
+  },
+  {
+    "id": "gdtf-light-sky-pl61w3-94890",
+    "file": "library/gdtf/light-sky/LIGHT_SKY_PL61W3_94890.gdtf",
+    "brand": "Light Sky"
+  },
+  {
+    "id": "gdtf-light-sky-pearl-wash-94797",
+    "file": "library/gdtf/light-sky/LIGHT_SKY_Pearl_wash_94797.gdtf",
+    "brand": "Light Sky"
+  },
+  {
+    "id": "gdtf-light-sky-s550-bsw-16679",
+    "file": "library/gdtf/light-sky/LIGHT_SKY_S550_BSW_16679.gdtf",
+    "brand": "Light Sky"
+  },
+  {
+    "id": "gdtf-light-sky-scope-beam-94880",
+    "file": "library/gdtf/light-sky/LIGHT_SKY_SCOPE_BEAM_94880.gdtf",
+    "brand": "Light Sky"
+  },
+  {
+    "id": "gdtf-light-sky-seagul-143446",
+    "file": "library/gdtf/light-sky/LIGHT_SKY_SEAGUL_143446.gdtf",
+    "brand": "Light Sky"
+  },
+  {
+    "id": "gdtf-light-sky-seal-153067",
+    "file": "library/gdtf/light-sky/LIGHT_SKY_SEAL_153067.gdtf",
+    "brand": "Light Sky"
+  },
+  {
+    "id": "gdtf-light-sky-sea-angel-152899",
+    "file": "library/gdtf/light-sky/LIGHT_SKY_SEA_ANGEL_152899.gdtf",
+    "brand": "Light Sky"
+  },
+  {
+    "id": "gdtf-light-sky-sea-lion-148069",
+    "file": "library/gdtf/light-sky/LIGHT_SKY_SEA_LION_148069.gdtf",
+    "brand": "Light Sky"
+  },
+  {
+    "id": "gdtf-light-sky-shark400bsw-94799",
+    "file": "library/gdtf/light-sky/LIGHT_SKY_SHARK400BSW_94799.gdtf",
+    "brand": "Light Sky"
+  },
+  {
+    "id": "gdtf-light-sky-shark400-94798",
+    "file": "library/gdtf/light-sky/LIGHT_SKY_SHARK400_94798.gdtf",
+    "brand": "Light Sky"
+  },
+  {
+    "id": "gdtf-light-sky-shark450bsw-94801",
+    "file": "library/gdtf/light-sky/LIGHT_SKY_SHARK450BSW_94801.gdtf",
+    "brand": "Light Sky"
+  },
+  {
+    "id": "gdtf-light-sky-shark450-94800",
+    "file": "library/gdtf/light-sky/LIGHT_SKY_SHARK450_94800.gdtf",
+    "brand": "Light Sky"
+  },
+  {
+    "id": "gdtf-light-sky-shark-laser-94897",
+    "file": "library/gdtf/light-sky/LIGHT_SKY_SHARK_LASER_94897.gdtf",
+    "brand": "Light Sky"
+  },
+  {
+    "id": "gdtf-light-sky-shark-laser-economic-94898",
+    "file": "library/gdtf/light-sky/LIGHT_SKY_SHARK_LASER_Economic_94898.gdtf",
+    "brand": "Light Sky"
+  },
+  {
+    "id": "gdtf-light-sky-sirena-bar-149885",
+    "file": "library/gdtf/light-sky/LIGHT_SKY_SIRENA_BAR_149885.gdtf",
+    "brand": "Light Sky"
+  },
+  {
+    "id": "gdtf-light-sky-sousa-153637",
+    "file": "library/gdtf/light-sky/LIGHT_SKY_SOUSA_153637.gdtf",
+    "brand": "Light Sky"
+  },
+  {
+    "id": "gdtf-light-sky-sunny-94125",
+    "file": "library/gdtf/light-sky/LIGHT_SKY_SUNNY_94125.gdtf",
+    "brand": "Light Sky"
+  },
+  {
+    "id": "gdtf-light-sky-super-scope-aqua-150353",
+    "file": "library/gdtf/light-sky/LIGHT_SKY_SUPER_SCOPE_AQUA_150353.gdtf",
+    "brand": "Light Sky"
+  },
+  {
+    "id": "gdtf-light-sky-super-scope-color-140485",
+    "file": "library/gdtf/light-sky/LIGHT_SKY_SUPER_SCOPE_COLOR_140485.gdtf",
+    "brand": "Light Sky"
+  },
+  {
+    "id": "gdtf-light-sky-super-scope-hybrid-94899",
+    "file": "library/gdtf/light-sky/LIGHT_SKY_SUPER_SCOPE_HYBRID_94899.gdtf",
+    "brand": "Light Sky"
+  },
+  {
+    "id": "gdtf-light-sky-super-scope-hybrid-pro-94901",
+    "file": "library/gdtf/light-sky/LIGHT_SKY_SUPER_SCOPE_HYBRID_PRO_94901.gdtf",
+    "brand": "Light Sky"
+  },
+  {
+    "id": "gdtf-light-sky-super-scope-ii-147918",
+    "file": "library/gdtf/light-sky/LIGHT_SKY_SUPER_SCOPE_II_147918.gdtf",
+    "brand": "Light Sky"
+  },
+  {
+    "id": "gdtf-light-sky-super-scope-ii-hc-102495",
+    "file": "library/gdtf/light-sky/LIGHT_SKY_SUPER_SCOPE_II_HC_102495.gdtf",
+    "brand": "Light Sky"
+  },
+  {
+    "id": "gdtf-light-sky-super-scope-wash-157540",
+    "file": "library/gdtf/light-sky/LIGHT_SKY_SUPER_SCOPE_WASH_157540.gdtf",
+    "brand": "Light Sky"
+  },
+  {
+    "id": "gdtf-light-sky-super-shark-beam-94907",
+    "file": "library/gdtf/light-sky/LIGHT_SKY_SUPER_SHARK_BEAM_94907.gdtf",
+    "brand": "Light Sky"
+  },
+  {
+    "id": "gdtf-light-sky-shark-profile-94806",
+    "file": "library/gdtf/light-sky/LIGHT_SKY_Shark_Profile_94806.gdtf",
+    "brand": "Light Sky"
+  },
+  {
+    "id": "gdtf-light-sky-sirena-95812",
+    "file": "library/gdtf/light-sky/LIGHT_SKY_Sirena_95812.gdtf",
+    "brand": "Light Sky"
+  },
+  {
+    "id": "gdtf-light-sky-super-scope-94827",
+    "file": "library/gdtf/light-sky/LIGHT_SKY_Super_Scope_94827.gdtf",
+    "brand": "Light Sky"
+  },
+  {
+    "id": "gdtf-light-sky-super-scope-max-110819",
+    "file": "library/gdtf/light-sky/LIGHT_SKY_Super_Scope_Max_110819.gdtf",
+    "brand": "Light Sky"
+  },
+  {
+    "id": "gdtf-light-sky-super-scope-plus-110438",
+    "file": "library/gdtf/light-sky/LIGHT_SKY_Super_Scope_Plus_110438.gdtf",
+    "brand": "Light Sky"
+  },
+  {
+    "id": "gdtf-light-sky-super-scope-pro-94825",
+    "file": "library/gdtf/light-sky/LIGHT_SKY_Super_Scope_Pro_94825.gdtf",
+    "brand": "Light Sky"
+  },
+  {
+    "id": "gdtf-light-sky-tx1920-hc-94695",
+    "file": "library/gdtf/light-sky/LIGHT_SKY_TX1920-HC_94695.gdtf",
+    "brand": "Light Sky"
+  },
+  {
+    "id": "gdtf-light-sky-tx1920zoom-94694",
+    "file": "library/gdtf/light-sky/LIGHT_SKY_TX1920Zoom_94694.gdtf",
+    "brand": "Light Sky"
+  },
+  {
+    "id": "gdtf-light-sky-tx1940d-30062",
+    "file": "library/gdtf/light-sky/LIGHT_SKY_TX1940D_30062.gdtf",
+    "brand": "Light Sky"
+  },
+  {
+    "id": "gdtf-light-sky-tx1940-zoom-94804",
+    "file": "library/gdtf/light-sky/LIGHT_SKY_TX1940_Zoom_94804.gdtf",
+    "brand": "Light Sky"
+  },
+  {
+    "id": "gdtf-light-sky-whale-beam-116938",
+    "file": "library/gdtf/light-sky/LIGHT_SKY_Whale_Beam_116938.gdtf",
+    "brand": "Light Sky"
+  },
+  {
+    "id": "gdtf-ilighting-power-strobe-1000-153223",
+    "file": "library/gdtf/ilighting/iLighting_Power_Strobe_1000_153223.gdtf",
+    "brand": "iLighting"
+  }
+]
