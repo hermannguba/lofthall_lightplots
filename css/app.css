@@ -83,11 +83,48 @@ h3 {
   font-size: 12px;
 }
 
-.header-actions, .tools, .views {
+.header-actions, .tools, .views, .bar-group {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
   align-items: center;
+}
+
+.project-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 18px;
+  align-items: flex-end;
+  padding: 8px 16px;
+  border-bottom: 1px solid var(--line);
+  background: #161920;
+}
+
+.project-bar .bar-group { align-items: flex-end; }
+
+.project-bar .stack { margin-top: 0; min-width: 150px; }
+
+.project-bar select { min-width: 150px; max-width: 220px; }
+
+.save-state { margin-left: auto; align-self: center; }
+
+#name-form {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+#name-form[hidden] { display: none; }
+
+#name-form input {
+  width: 180px;
+  color: var(--text);
+  background: #121418;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 5px 6px;
+  font: inherit;
+  font-size: 13px;
 }
 
 .btn-accent,
@@ -316,10 +353,22 @@ dd {
   margin-top: 12px;
 }
 
-#library {
+#library, #models {
   max-height: 168px;
   overflow: auto;
   margin: 8px -14px 0;
+}
+
+#models { max-height: 140px; }
+
+#model-form { margin-top: 8px; }
+#model-form[hidden] { display: none; }
+#model-form button { margin-top: 10px; }
+
+.stack input[type="file"] {
+  padding: 4px 0;
+  border: 0;
+  background: transparent;
 }
 
 #lib-form { margin-top: 8px; }

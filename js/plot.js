@@ -59,6 +59,7 @@ var PlotFormat = (function () {
         hang: text(raw.hang),
         notes: text(raw.notes),
         gdtfId: text(raw.gdtfId),
+        modelId: text(raw.modelId),
       };
     });
 

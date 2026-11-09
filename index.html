@@ -28,6 +28,30 @@
       <button type="button" id="save-file">Скачать JSON</button>
     </div>
   </header>
+  <div class="project-bar">
+    <div class="bar-group">
+      <label class="stack">Проект
+        <select id="project-select"></select>
+      </label>
+      <button type="button" id="project-new">Новый</button>
+      <button type="button" id="project-rename">Переименовать</button>
+      <button type="button" id="project-delete">Удалить</button>
+    </div>
+    <div class="bar-group">
+      <label class="stack">Схема
+        <select id="plot-select"></select>
+      </label>
+      <button type="button" id="plot-new">Новая</button>
+      <button type="button" id="plot-rename">Переименовать</button>
+      <button type="button" id="plot-delete">Удалить</button>
+    </div>
+    <form id="name-form" hidden>
+      <input name="title" required placeholder="Название" autocomplete="off">
+      <button type="submit" id="name-submit">Создать</button>
+      <button type="button" id="name-cancel">Отмена</button>
+    </form>
+    <span class="meta save-state" id="save-state"></span>
+  </div>
   <div class="workspace">
     <div class="stage">
       <canvas id="view"></canvas>
@@ -54,6 +78,26 @@
       <section>
         <h2>Слои</h2>
         <div id="layers"></div>
+      </section>
+      <section>
+        <div class="section-head">
+          <h2>Модели</h2>
+          <button type="button" id="model-add">Добавить</button>
+        </div>
+        <p class="empty">GLB в метрах: прибор, элемент сцены или конструкция. Выберите и щёлкните по полу.</p>
+        <div id="models"></div>
+        <form id="model-form" hidden>
+          <label class="stack">Название<input name="name" required autocomplete="off"></label>
+          <label class="stack">Категория
+            <select name="category">
+              <option value="fixture">Световой прибор</option>
+              <option value="stage">Сценический элемент</option>
+              <option value="structure">Конструктивный элемент</option>
+            </select>
+          </label>
+          <label class="stack">Файл GLB<input name="file" type="file" accept=".glb,model/gltf-binary" required></label>
+          <button type="submit">В библиотеку</button>
+        </form>
       </section>
       <section>
         <div class="section-head">
@@ -96,8 +140,10 @@
   </div>
   <script src="js/math.js"></script>
   <script src="js/plot.js"></script>
+  <script src="js/db.js"></script>
   <script src="js/zip.js"></script>
   <script src="js/glb.js"></script>
+  <script src="js/models.js"></script>
   <script src="js/gdtf.js"></script>
   <script src="js/mvr.js"></script>
   <script src="js/library.js"></script>
